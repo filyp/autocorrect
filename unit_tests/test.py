@@ -8,27 +8,24 @@ from autocorrect.spell import spell
 from autocorrect.word import known
 from autocorrect.nlp_parser import NLP_COUNTS
 
-MSG = 'correct({}) => {} ({}); expected {} ({})'
+MSG = 'spell({}) => {} ({}); should be {} ({})'
+RESULT = 'bad: {}/{}, % correct: {}, unknown: {}, secs: {}'
 
-def spelltest(tests, bias=None, verbose=False):
-    nlp_counts = deepcopy(NLP_COUNTS)
+def spelltest(tests, verbose=False):
     n, bad, unknown, start = 0, 0, 0, time.clock()
-    if bias:
-        for target in tests:
-            nlp_counts[target] += bias
-    for target, incorrect_words in tests.items():
-        for incorrect_word in incorrect_words.split():
+    for target, incorrect_spellings in tests.items():
+        for incorrect_spelling in incorrect_spellings.split():
             n += 1
-            w = spell(incorrect_word)
+            w = spell(incorrect_spelling)
             if w != target:
                 bad += 1
                 if not known([target]):
                     unknown += 1
                 if verbose:
-                    print(MSG.format(incorrect_word, w, word_counts[w],
-                                     target, word_counts[target]))
-    return dict(bad=bad, n=n, bias=bias, pct=int(100. - 100. * bad / n), 
-                unknown=unknown, secs=int(time.clock() - start) )
+                    print(MSG.format(incorrect_spelling, w, NLP_COUNTS[w],
+                                     target, NLP_COUNTS[target]))
+    return RESULT.format(bad, n, int(100. - 100. * bad / n), 
+                         unknown, int(time.clock() - start))
 
 tests1 = {'access': 'acess',
           'accessing': 'accesing',

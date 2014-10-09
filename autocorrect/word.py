@@ -101,4 +101,5 @@ class Word(object):
             try:
                 return CASE_MAPPED[correction]
             except KeyError:
-                return correction
+                pass
+        return correction
