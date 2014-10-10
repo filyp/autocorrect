@@ -14,7 +14,7 @@ https://github.com/foobarmus/autocorrect
 
 """
 from autocorrect.nlp_parser import NLP_COUNTS
-from autocorrect.word import Word, common, exact, known
+from autocorrect.word import Word, common, exact, known, get_case
 
 def spell(word):
     """most likely correction for everything up to a double typo"""
@@ -23,4 +23,4 @@ def spell(word):
                   known(w.typos()) or common(w.double_typos()) or
                   [word])
     correction = max(candidates, key=NLP_COUNTS.get)
-    return w.get_case(correction)
+    return get_case(word, correction)

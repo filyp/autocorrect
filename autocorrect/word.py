@@ -15,29 +15,10 @@ https://github.com/foobarmus/autocorrect
 """
 from autocorrect.utils import concat
 from autocorrect.nlp_parser import NLP_WORDS
-from autocorrect.word_lists import LOWERCASE, CASE_MAPPED
+from autocorrect.word_lists import LOWERCASE, MIXED_CASE
+from autocorrect.word_lists import LOWERED, CASE_MAPPED
 
 ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
-LOWERED = set(CASE_MAPPED.keys())
-MIXED_CASE = set(CASE_MAPPED.values())
-
-def common(words):
-    """{'the', 'teh'} => {'the'}"""
-    return set(words) & NLP_WORDS
-
-def exact(words):
-    """{'Snog', 'snog', 'Snoddy'} => {'Snoddy'}"""
-    return set(words) & MIXED_CASE
-
-def known(words):
-    """{'Gazpacho', 'gazzpacho'} => {'gazpacho'}"""
-    return ({w.lower() for w in words} &
-            (LOWERCASE | LOWERED | NLP_WORDS))
-
-def known_as_lower(words):
-    """{'Natasha', 'Bob'} => {'bob'}"""
-    return {w.lower() for w in words} & LOWERCASE
-
 
 class Word(object):
     """container for word-based methods"""
@@ -89,20 +70,46 @@ class Word(object):
         return {e2 for e1 in self.typos()
                 for e2 in Word(e1).typos()}
 
-    def get_case(self, correction):
-        """best guess of intended case"""
-        word = self.word
-        if correction == word:
-            return word
-        if word.isupper():
-            return correction.upper()
-        if word.istitle():
-            return correction.title()
-        if len(word) > 2 and word[:2].isupper():
-            return correction.title()
-        if not known_as_lower([correction]):
-            try:
-                return CASE_MAPPED[correction]
-            except KeyError:
-                pass
-        return correction
+
+def common(words):
+    """{'the', 'teh'} => {'the'}"""
+    return set(words) & NLP_WORDS
+
+def exact(words):
+    """{'Snog', 'snog', 'Snoddy'} => {'Snoddy'}"""
+    return set(words) & MIXED_CASE
+
+def known(words):
+    """{'Gazpacho', 'gazzpacho'} => {'gazpacho'}"""
+    return ({w.lower() for w in words} &
+            (LOWERCASE | LOWERED | NLP_WORDS))
+
+def known_as_lower(words):
+    """{'Natasha', 'Bob'} => {'bob'}"""
+    return {w.lower() for w in words} & LOWERCASE
+
+def get_case(word, correction):
+    """
+    Best guess of intended case.
+
+    manchester => manchester
+    chilton => Chilton
+    AAvTech => AAvTech
+    THe => The
+    imho => IMHO
+
+    """
+    if word.istitle():
+        return correction.title()
+    if word.isupper():
+        return correction.upper()
+    if correction == word and not word.islower():
+        return word
+    if len(word) > 2 and word[:2].isupper():
+        return correction.title()
+    if not known_as_lower([correction]): #expensive
+        try:
+            return CASE_MAPPED[correction]
+        except KeyError:
+            pass
+    return correction
