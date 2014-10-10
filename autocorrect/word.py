@@ -7,7 +7,7 @@
 # Open source, MIT license
 # http://www.opensource.org/licenses/mit-license.php
 """
-Word based methods
+Word based methods and functions
 
 Author: Jonas McCallum
 https://github.com/foobarmus/autocorrect
