@@ -30,9 +30,14 @@ def exact(words):
     return set(words) & MIXED_CASE
 
 def known(words):
-    """{'gazpacho', 'gazzpacho'} => {'gazpacho'}"""
+    """{'Gazpacho', 'gazzpacho'} => {'gazpacho'}"""
     return ({w.lower() for w in words} &
             (LOWERCASE | LOWERED | NLP_WORDS))
+
+def known_as_lower(words):
+    """{'Natasha', 'Bob'} => {'bob'}"""
+    return {w.lower() for w in words} & LOWERCASE
+
 
 class Word(object):
     """container for word-based methods"""
@@ -95,9 +100,7 @@ class Word(object):
             return correction.title()
         if len(word) > 2 and word[:2].isupper():
             return correction.title()
-
-        # expensive, hence last
-        if not known([correction]):
+        if not known_as_lower([correction]):
             try:
                 return CASE_MAPPED[correction]
             except KeyError:
