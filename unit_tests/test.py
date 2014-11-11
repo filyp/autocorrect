@@ -4,7 +4,7 @@ from copy import deepcopy
 PATH = os.path.abspath(os.path.dirname(__file__))
 SOURCE_DIR = os.path.split(PATH)[0]
 sys.path.append(SOURCE_DIR)
-from autocorrect.spell import spell
+from autocorrect import spell
 from autocorrect.word import known
 from autocorrect.nlp_parser import NLP_COUNTS
 

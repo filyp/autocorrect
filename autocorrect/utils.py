@@ -17,13 +17,12 @@ import re, os, tarfile
 from contextlib import closing
 
 PATH = os.path.abspath(os.path.dirname(__file__))
-SOURCE_DIR = os.path.split(PATH)[0]
 BZ2 = 'words.bz2'
 RE = '[A-Za-z]+'
 
 def words_from_archive(filename, map_case=False):
     """extract words from a text file in the archive"""
-    bz2 = os.path.join(SOURCE_DIR, BZ2)
+    bz2 = os.path.join(PATH, BZ2)
     tar_path = os.path.join('words', filename)
     with closing(tarfile.open(bz2, 'r:bz2')) as t:
         with closing(t.extractfile(tar_path)) as f:
