@@ -23,7 +23,7 @@ RE = '[A-Za-z]+'
 def words_from_archive(filename, include_dups=False, map_case=False):
     """extract words from a text file in the archive"""
     bz2 = os.path.join(PATH, BZ2)
-    tar_path = os.path.join('words', filename)
+    tar_path = 'words/'+filename #fix loading problem on windows os.path.join('words', filename)
     with closing(tarfile.open(bz2, 'r:bz2')) as t:
         with closing(t.extractfile(tar_path)) as f:
             words = re.findall(RE, f.read().decode(encoding='utf-8'))
