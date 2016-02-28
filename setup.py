@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(name='autocorrect',
-      version='0.2.0',
+      version='0.3.0',
       packages=['autocorrect'],
       package_data={'autocorrect': ['words.bz2']},
       description='Python 3 Spelling Corrector',
