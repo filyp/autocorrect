@@ -17,6 +17,6 @@ Examples
     >>> spell('HTe')
     'The'
 
-Issues
-======
-https://github.com/foobarmus/autocorrect/issues
+Contribute
+==========
+https://github.com/phatpiglet/autocorrect
