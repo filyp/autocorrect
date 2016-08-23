@@ -15,6 +15,7 @@ https://github.com/foobarmus/autocorrect
 """
 import re, os, tarfile
 from contextlib import closing
+from itertools import chain
 
 PATH = os.path.abspath(os.path.dirname(__file__))
 BZ2 = 'words.bz2'
@@ -36,11 +37,10 @@ def words_from_archive(filename, include_dups=False, map_case=False):
 
 def concat(*args):
     """reversed('th'), 'e' => 'hte'"""
-    args = list(args)
-    for i, arg in enumerate(args):
-        if not isinstance(arg, str):
-            args[i] = ''.join(arg)
-    return ''.join(args)
+    try:
+        return ''.join(args)
+    except TypeError:
+        return ''.join(chain.from_iterable(args))
 
 class Zero(dict):
     """dict with a zero default"""
