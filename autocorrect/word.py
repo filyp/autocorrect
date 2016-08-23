@@ -19,6 +19,7 @@ from autocorrect.word_lists import LOWERCASE, MIXED_CASE
 from autocorrect.word_lists import LOWERED, CASE_MAPPED
 
 ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
+KNOWN_WORDS = LOWERCASE | LOWERED | NLP_WORDS
 
 class Word(object):
     """container for word-based methods"""
@@ -81,8 +82,7 @@ def exact(words):
 
 def known(words):
     """{'Gazpacho', 'gazzpacho'} => {'gazpacho'}"""
-    return ({w.lower() for w in words} &
-            (LOWERCASE | LOWERED | NLP_WORDS))
+    return {w.lower() for w in words} & KNOWN_WORDS
 
 def known_as_lower(words):
     """{'Natasha', 'Bob'} => {'bob'}"""
