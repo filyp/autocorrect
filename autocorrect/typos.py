@@ -28,7 +28,10 @@ def concat(*args):
 class Word(object):
     """container for word-based methods"""
 
-    ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
+    alphabets = {
+        'en': 'abcdefghijklmnopqrstuvwxyz',
+        'pl': 'abcdefghijklmnopqrstuvwxyzęóąśłżźćń',
+    }
 
     def __init__(self, word):
         """
@@ -44,6 +47,7 @@ class Word(object):
         self.slices = tuple((word_[:i], word_[i:])
                             for i in slice_range)
         self.word = word
+        self.alphabet = self.alphabets['pl']
 
     def _deletes(self):
         """th"""
@@ -59,13 +63,13 @@ class Word(object):
         """tge"""
         return {concat(a, c, b[1:])
                 for a, b in self.slices[:-1]
-                for c in self.ALPHABET}
+                for c in self.alphabet}
 
     def _inserts(self):
         """thwe"""
         return {concat(a, c, b)
                 for a, b in self.slices
-                for c in self.ALPHABET}
+                for c in self.alphabet}
 
     def typos(self):
         """letter combinations one typo away from word"""
