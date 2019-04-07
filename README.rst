@@ -20,11 +20,13 @@ Now, you need a bunch of text. Easiest way is to download wikipedia.
 For example for russian go to:
 https://dumps.wikimedia.org/enwiki/latest/ 
 and download ruwiki-latest-pages-articles.xml.bz2
+
 .. code-block:: bash
 
     tar -jxvf ruwiki-latest-pages-articles.xml.bz2
 
 After that:
+
 .. code-block:: python
 
     >>> from autocorrect.word_count import count_words
