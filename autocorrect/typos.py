@@ -12,6 +12,9 @@ Word based methods and functions
 Author: Jonas McCallum
 https://github.com/foobarmus/autocorrect
 
+Optimized by: Filip Sondej
+https://github.com/fifimajster/autocorrect/
+
 """
 
 from itertools import chain
