@@ -1,14 +1,21 @@
-import re
 import json
+import re
 
-word_pl = r'[A-Za-zęóąśłżźćń]+' 
+word_regexes = {
+    'en': r'[A-Za-z]+', 
+    'pl': r'[A-Za-zęóąśłżźćń]+',
+}
 
 
-def get_words(filename): 
+def get_words(filename, lang): 
+    word = re.compile(word_regexes[lang])
+    capitalized = re.compile(r'(\.|^)\s*' + 
+                             word_regexes[lang])
     with open(filename) as file: 
         for line in file: 
-            for word in re.findall(word_pl, line): 
-                yield word.lower() 
+            line = re.sub(capitalized, '', line)
+            for word in re.findall(word, line): 
+                yield word
 
 
 def parse(words):
@@ -21,8 +28,8 @@ def parse(words):
     return counts
 
 
-def count_words(src_filename, out_filename='word_count.json'):
-    words = get_words(src_filename)
+def count_words(src_filename, lang, out_filename='word_count.json'):
+    words = get_words(src_filename, lang)
     counts = parse(words)
     with open(out_filename, 'w') as outfile:
         json.dump(counts, outfile)
