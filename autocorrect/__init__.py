@@ -3,7 +3,8 @@ import re
 import tarfile
 from contextlib import closing
 
-from typos import Word
+from autocorrect.constants import word_regexes
+from autocorrect.typos import Word
 
 
 def load_from_tar(archive_name, file_name='word_count.json'):
@@ -13,9 +14,11 @@ def load_from_tar(archive_name, file_name='word_count.json'):
 
 
 class Speller:
-    def __init__(self, threshold=0):
+    def __init__(self, threshold=0, lang='en'):
         self.threshold = threshold
-        self.nlp_data = load_from_tar('word_count.json.tar')
+        tarfile = f'data/{lang}wiki.tar.gz'
+        self.nlp_data = load_from_tar(tarfile)
+        self.lang = lang
 
         # print(len(self.nlp_data))
         # self.nlp_data = {k: v for k, v in self.nlp_data.items() 
@@ -26,13 +29,20 @@ class Speller:
         """{'the', 'teh'} => {'the'}"""
         # return set(words) & self.nlp_words
         return set(word for word in words
-                    if word in self.nlp_data)
+                   if word in self.nlp_data)
 
-    def __call__(self, word):
+    def autocorrect_word(self, word):
         """most likely correction for everything up to a double typo"""
-        w = Word(word, 'pl')
+        w = Word(word, self.lang)
         candidates = (self.existing([word]) or 
                       self.existing(w.typos()) or 
                       self.existing(w.double_typos()) or 
                       [word])
         return max(candidates, key=self.nlp_data.get)
+
+    def autocorrect_sentence(self, sentence):
+        return re.sub(word_regexes[self.lang],
+                      lambda match: self.autocorrect_word(match.group(0)),
+                      sentence)
+
+    __call__ = autocorrect_sentence

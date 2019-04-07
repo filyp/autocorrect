@@ -1,16 +1,12 @@
 import json
 import re
 
-word_regexes = {
-    'en': r'[A-Za-z]+', 
-    'pl': r'[A-Za-zęóąśłżźćń]+',
-}
+from autocorrect.constants import word_regexes
 
 
 def get_words(filename, lang): 
-    word = re.compile(word_regexes[lang])
-    capitalized = re.compile(r'(\.|^)\s*' + 
-                             word_regexes[lang])
+    word = word_regexes[lang]
+    capitalized = r'(\.|^)\s*' + word_regexes[lang]
     with open(filename) as file: 
         for line in file: 
             line = re.sub(capitalized, '', line)

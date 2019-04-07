@@ -16,6 +16,8 @@ https://github.com/foobarmus/autocorrect
 
 from itertools import chain
 
+from autocorrect.constants import alphabets
+
 
 def concat(*args):
     """reversed('th'), 'e' => 'hte'"""
@@ -27,11 +29,6 @@ def concat(*args):
 
 class Word(object):
     """container for word-based methods"""
-
-    alphabets = {
-        'en': 'abcdefghijklmnopqrstuvwxyz',
-        'pl': 'abcdefghijklmnopqrstuvwxyzęóąśłżźćń',
-    }
 
     def __init__(self, word, lang='en'):
         """
@@ -47,7 +44,7 @@ class Word(object):
         self.slices = tuple((word_[:i], word_[i:])
                             for i in slice_range)
         self.word = word
-        self.alphabet = self.alphabets[lang]
+        self.alphabet = alphabets[lang]
 
     def _deletes(self):
         """th"""
