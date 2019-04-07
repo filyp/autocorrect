@@ -13,16 +13,22 @@ Author: Jonas McCallum
 https://github.com/foobarmus/autocorrect
 
 """
-from autocorrect.utils import concat
-from autocorrect.nlp_parser import NLP_WORDS
-from autocorrect.word_lists import LOWERCASE, MIXED_CASE
-from autocorrect.word_lists import LOWERED, CASE_MAPPED
 
-ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
-KNOWN_WORDS = LOWERCASE | LOWERED | NLP_WORDS
+from itertools import chain
+
+
+def concat(*args):
+    """reversed('th'), 'e' => 'hte'"""
+    try:
+        return ''.join(args)
+    except TypeError:
+        return ''.join(chain.from_iterable(args))
+
 
 class Word(object):
     """container for word-based methods"""
+
+    ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
 
     def __init__(self, word):
         """
@@ -53,13 +59,13 @@ class Word(object):
         """tge"""
         return {concat(a, c, b[1:])
                 for a, b in self.slices[:-1]
-                for c in ALPHABET}
+                for c in self.ALPHABET}
 
     def _inserts(self):
         """thwe"""
         return {concat(a, c, b)
                 for a, b in self.slices
-                for c in ALPHABET}
+                for c in self.ALPHABET}
 
     def typos(self):
         """letter combinations one typo away from word"""
@@ -70,46 +76,3 @@ class Word(object):
         """letter combinations two typos away from word"""
         return {e2 for e1 in self.typos()
                 for e2 in Word(e1).typos()}
-
-
-def common(words):
-    """{'the', 'teh'} => {'the'}"""
-    return set(words) & NLP_WORDS
-
-def exact(words):
-    """{'Snog', 'snog', 'Snoddy'} => {'Snoddy'}"""
-    return set(words) & MIXED_CASE
-
-def known(words):
-    """{'Gazpacho', 'gazzpacho'} => {'gazpacho'}"""
-    return {w.lower() for w in words} & KNOWN_WORDS
-
-def known_as_lower(words):
-    """{'Natasha', 'Bob'} => {'bob'}"""
-    return {w.lower() for w in words} & LOWERCASE
-
-def get_case(word, correction):
-    """
-    Best guess of intended case.
-
-    manchester => manchester
-    chilton => Chilton
-    AAvTech => AAvTech
-    THe => The
-    imho => IMHO
-
-    """
-    if word.istitle():
-        return correction.title()
-    if word.isupper():
-        return correction.upper()
-    if correction == word and not word.islower():
-        return word
-    if len(word) > 2 and word[:2].isupper():
-        return correction.title()
-    if not known_as_lower([correction]): #expensive
-        try:
-            return CASE_MAPPED[correction]
-        except KeyError:
-            pass
-    return correction
