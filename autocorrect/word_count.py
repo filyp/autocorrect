@@ -5,12 +5,12 @@ from autocorrect.constants import word_regexes
 
 
 def get_words(filename, lang): 
-    word = word_regexes[lang]
-    capitalized = r'(\.|^)\s*' + word_regexes[lang]
+    word_regex = word_regexes[lang]
+    capitalized_regex = r'(\.|^|<|"|\'|\(|\[|\{)\s*' + word_regexes[lang]
     with open(filename) as file: 
-        for line in file: 
-            line = re.sub(capitalized, '', line)
-            for word in re.findall(word, line): 
+        for line in file:
+            line = re.sub(capitalized_regex, '', line)
+            for word in re.findall(word_regex, line): 
                 yield word
 
 

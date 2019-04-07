@@ -42,9 +42,8 @@ class Word(object):
                   ('th', 'e'), ('the', ''))
 
         """
-        word_ = word.lower()
-        slice_range = range(len(word_) + 1)
-        self.slices = tuple((word_[:i], word_[i:])
+        slice_range = range(len(word) + 1)
+        self.slices = tuple((word[:i], word[i:])
                             for i in slice_range)
         self.word = word
         self.alphabet = alphabets[lang]
@@ -73,8 +72,6 @@ class Word(object):
 
     def typos(self):
         """letter combinations one typo away from word"""
-        # return (self._deletes() | self._transposes() |
-        #         self._replaces() | self._inserts())
         yield from self._deletes()
         yield from self._transposes()
         yield from self._replaces()

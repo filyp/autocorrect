@@ -16,18 +16,18 @@ def load_from_tar(archive_name, file_name='word_count.json'):
 class Speller:
     def __init__(self, threshold=0, lang='en'):
         self.threshold = threshold
-        tarfile = f'data/{lang}wiki.tar.gz'
+        tarfile = f'data/{lang}.tar.gz'
         self.nlp_data = load_from_tar(tarfile)
         self.lang = lang
 
-        # print(len(self.nlp_data))
-        # self.nlp_data = {k: v for k, v in self.nlp_data.items() 
-        #                 if v > threshold}
-        # print(len(self.nlp_data))
+        if threshold > 0:
+            print(f'Original number of words: {len(self.nlp_data)}')
+            self.nlp_data = {k: v for k, v in self.nlp_data.items() 
+                            if v > threshold}
+            print(f'After applying threshold: {len(self.nlp_data)}')
 
     def existing(self, words):
         """{'the', 'teh'} => {'the'}"""
-        # return set(words) & self.nlp_words
         return set(word for word in words
                    if word in self.nlp_data)
 
