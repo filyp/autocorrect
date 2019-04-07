@@ -33,7 +33,7 @@ class Word(object):
         'pl': 'abcdefghijklmnopqrstuvwxyzęóąśłżźćń',
     }
 
-    def __init__(self, word):
+    def __init__(self, word, lang='en'):
         """
         Generate slices to assist with typo
         definitions.
@@ -47,36 +47,40 @@ class Word(object):
         self.slices = tuple((word_[:i], word_[i:])
                             for i in slice_range)
         self.word = word
-        self.alphabet = self.alphabets['pl']
+        self.alphabet = self.alphabets[lang]
 
     def _deletes(self):
         """th"""
-        return {concat(a, b[1:])
-                for a, b in self.slices[:-1]}
+        return (concat(a, b[1:])
+                for a, b in self.slices[:-1])
 
     def _transposes(self):
         """teh"""
-        return {concat(a, reversed(b[:2]), b[2:])
-                for a, b in self.slices[:-2]}
+        return (concat(a, reversed(b[:2]), b[2:])
+                for a, b in self.slices[:-2])
 
     def _replaces(self):
         """tge"""
-        return {concat(a, c, b[1:])
+        return (concat(a, c, b[1:])
                 for a, b in self.slices[:-1]
-                for c in self.alphabet}
+                for c in self.alphabet)
 
     def _inserts(self):
         """thwe"""
-        return {concat(a, c, b)
+        return (concat(a, c, b)
                 for a, b in self.slices
-                for c in self.alphabet}
+                for c in self.alphabet)
 
     def typos(self):
         """letter combinations one typo away from word"""
-        return (self._deletes() | self._transposes() |
-                self._replaces() | self._inserts())
+        # return (self._deletes() | self._transposes() |
+        #         self._replaces() | self._inserts())
+        yield from self._deletes()
+        yield from self._transposes()
+        yield from self._replaces()
+        yield from self._inserts()
 
     def double_typos(self):
         """letter combinations two typos away from word"""
-        return {e2 for e1 in self.typos()
-                for e2 in Word(e1).typos()}
+        return (e2 for e1 in self.typos()
+                for e2 in Word(e1).typos())
