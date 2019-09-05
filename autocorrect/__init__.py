@@ -13,8 +13,11 @@ Author: Jonas McCallum
 https://github.com/foobarmus/autocorrect
 
 """
+import re
+
 from autocorrect.nlp_parser import NLP_COUNTS
 from autocorrect.word import Word, common, exact, known, get_case
+
 
 def spell(word):
     """most likely correction for everything up to a double typo"""
@@ -24,3 +27,8 @@ def spell(word):
                   [word])
     correction = max(candidates, key=NLP_COUNTS.get)
     return get_case(word, correction)
+
+def spell_sentence(sentence):
+    return re.sub(r'[A-Za-z]+',
+                  lambda match: spell(match.group(0)),
+                  sentence)
