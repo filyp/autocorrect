@@ -41,25 +41,25 @@ class Word(object):
 
     def _deletes(self):
         """th"""
-        return (concat(a, b[1:])
-                for a, b in self.slices[:-1])
+        for a, b in self.slices[:-1]:
+            yield concat(a, b[1:])
 
     def _transposes(self):
         """teh"""
-        return (concat(a, reversed(b[:2]), b[2:])
-                for a, b in self.slices[:-2])
+        for a, b in self.slices[:-2]:
+            yield concat(a, reversed(b[:2]), b[2:])
 
     def _replaces(self):
         """tge"""
-        return (concat(a, c, b[1:])
-                for a, b in self.slices[:-1]
-                for c in ALPHABET)
+        for a, b in self.slices[:-1]:
+            for c in ALPHABET:
+                yield concat(a, c, b[1:])
 
     def _inserts(self):
         """thwe"""
-        return (concat(a, c, b)
-                for a, b in self.slices
-                for c in ALPHABET)
+        for a, b in self.slices:
+            for c in ALPHABET:
+                yield concat(a, c, b)
 
     def typos(self):
         """letter combinations one typo away from word"""
@@ -70,8 +70,9 @@ class Word(object):
 
     def double_typos(self):
         """letter combinations two typos away from word"""
-        return (e2 for e1 in self.typos()
-                for e2 in Word(e1).typos())
+        for e1 in self.typos():
+            for e2 in Word(e1).typos():
+                yield e2
 
 
 def common(words):
