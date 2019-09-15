@@ -19,4 +19,4 @@ Examples
 
 Contribute
 ==========
-https://github.com/phatpiglet/autocorrect
+https://github.com/fifimajster/autocorrect
