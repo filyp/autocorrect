@@ -1,2 +1,4 @@
 *.pyc
-data/*.xml
+data/*
+dist/*
+MANIFEST
