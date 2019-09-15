@@ -63,10 +63,14 @@ class Word(object):
 
     def typos(self):
         """letter combinations one typo away from word"""
-        yield from self._deletes()
-        yield from self._transposes()
-        yield from self._replaces()
-        yield from self._inserts()
+        for e in self._deletes():
+            yield e
+        for e in self._transposes():
+            yield e
+        for e in self._replaces():
+            yield e
+        for e in self._inserts():
+            yield e
 
     def double_typos(self):
         """letter combinations two typos away from word"""

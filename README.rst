@@ -13,9 +13,9 @@ Examples
 ========
 .. code-block:: python
 
-    >>> from autocorrect import spell
-    >>> spell('HTe')
-    'The'
+    >>> from autocorrect import spell_sentence
+    >>> spell_sentence("I'm not sleapy and tehre is no place I'm giong to.")
+    "I'm not sleepy and there is no place I'm going to."
 
 Contribute
 ==========
