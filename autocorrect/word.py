@@ -41,52 +41,59 @@ class Word(object):
 
     def _deletes(self):
         """th"""
-        return {concat(a, b[1:])
-                for a, b in self.slices[:-1]}
+        for a, b in self.slices[:-1]:
+            yield concat(a, b[1:])
 
     def _transposes(self):
         """teh"""
-        return {concat(a, reversed(b[:2]), b[2:])
-                for a, b in self.slices[:-2]}
+        for a, b in self.slices[:-2]:
+            yield concat(a, reversed(b[:2]), b[2:])
 
     def _replaces(self):
         """tge"""
-        return {concat(a, c, b[1:])
-                for a, b in self.slices[:-1]
-                for c in ALPHABET}
+        for a, b in self.slices[:-1]:
+            for c in ALPHABET:
+                yield concat(a, c, b[1:])
 
     def _inserts(self):
         """thwe"""
-        return {concat(a, c, b)
-                for a, b in self.slices
-                for c in ALPHABET}
+        for a, b in self.slices:
+            for c in ALPHABET:
+                yield concat(a, c, b)
 
     def typos(self):
         """letter combinations one typo away from word"""
-        return (self._deletes() | self._transposes() |
-                self._replaces() | self._inserts())
+        yield from self._deletes()
+        yield from self._transposes()
+        yield from self._replaces()
+        yield from self._inserts()
 
     def double_typos(self):
         """letter combinations two typos away from word"""
-        return {e2 for e1 in self.typos()
-                for e2 in Word(e1).typos()}
+        for e1 in self.typos():
+            for e2 in Word(e1).typos():
+                yield e2
 
 
 def common(words):
     """{'the', 'teh'} => {'the'}"""
-    return set(words) & NLP_WORDS
+    return set(word for word in words
+                if word in  NLP_WORDS)
 
 def exact(words):
     """{'Snog', 'snog', 'Snoddy'} => {'Snoddy'}"""
-    return set(words) & MIXED_CASE
+    return set(word for word in words
+                if word in MIXED_CASE)
 
 def known(words):
     """{'Gazpacho', 'gazzpacho'} => {'gazpacho'}"""
-    return {w.lower() for w in words} & KNOWN_WORDS
+    return set(word.lower() for word in words
+                if word.lower() in KNOWN_WORDS)
 
 def known_as_lower(words):
     """{'Natasha', 'Bob'} => {'bob'}"""
-    return {w.lower() for w in words} & LOWERCASE
+    return set(word.lower() for word in words
+                if word.lower() in LOWERCASE)
 
 def get_case(word, correction):
     """
