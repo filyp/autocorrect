@@ -3,6 +3,12 @@ autocorrect
 ===========
 Python 3 Spelling Corrector
 
+Installation
+============
+.. code-block:: bash
+
+    pip install autocorrect
+
 Examples
 ========
 .. code-block:: python
@@ -11,6 +17,9 @@ Examples
     >>> spell = Speller(lang='pl')
     >>> spell('ptaaki latatją kluczmm')                                         
     'ptaki latają kluczem'
+    >>> spell = Speller(lang='en')
+    >>> spell("I'm not sleapy and tehre is no place I'm giong to.")
+    "I'm not sleepy and there is no place I'm going to."
 
 Adding new langeages
 ========
@@ -35,3 +44,7 @@ After that:
 .. code-block:: bash
 
     tar -zcvf data/ru.tar.gz word_count.json
+
+Contribute
+==========
+https://github.com/fifimajster/autocorrect
