@@ -1,9 +1,8 @@
 from distutils.core import setup
 
 setup(name='autocorrect',
-      version='0.3.1',
+      version='0.4.0',
       packages=['autocorrect'],
-      package_data={'autocorrect': ['words.bz2']},
       description='Python 3 Spelling Corrector',
       author='Jonas McCallum',
       author_email='jonasmccallum@gmail.com',
@@ -12,6 +11,7 @@ setup(name='autocorrect',
       classifiers=('Intended Audience :: Developers',
                    'License :: OSI Approved :: MIT License',
                    'Natural Language :: English',
+                   'Natural Language :: Polish',
                    'Programming Language :: Python',
                    'Programming Language :: Python :: 2.7',
                    'Programming Language :: Python :: 3',),
