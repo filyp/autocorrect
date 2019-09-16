@@ -16,7 +16,7 @@ def load_from_tar(archive_name, file_name='word_count.json'):
 class Speller:
     def __init__(self, threshold=0, lang='en'):
         self.threshold = threshold
-        tarfile = f'data/{lang}.tar.gz'
+        tarfile = f'autocorrect/data/{lang}.tar.gz'
         self.nlp_data = load_from_tar(tarfile)
         self.lang = lang
 
