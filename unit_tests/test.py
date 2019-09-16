@@ -9,7 +9,7 @@ from autocorrect import Speller
 MSG = 'spell({}) => {}; should be {}'
 RESULT = 'bad: {}/{}, % correct: {}, secs: {}'
 
-def spelltest(speller, tests, verbose=False):
+def spelltest(speller, tests, verbose=True):
     n, bad, start = 0, 0, time.time()
     for target, incorrect_spellings in tests.items():
         for incorrect_spelling in incorrect_spellings.split('|'):
@@ -473,8 +473,16 @@ sentences = {
     "I'm not sleapy and tehre is no place I'm giong to."
 }
 
+polish = {
+    'gżegżółka': 'grzegżółka',
+    'pszczoła': 'przczoua',
+    'kosodrzewina': 'kosodzewima', 
+}
+
 
 if __name__ == '__main__':
     spell = Speller(lang='en')
-    print(spelltest(spell, tests1, verbose=True))
-    print(spelltest(spell, sentences, verbose=True))
+    print(spelltest(spell, tests1))
+    print(spelltest(spell, sentences))
+    spell = Speller(lang='pl')
+    print(spelltest(spell, polish))
