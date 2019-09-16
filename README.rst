@@ -1,7 +1,9 @@
 ===========
 autocorrect
 ===========
-Python 3 Spelling Corrector
+Spelling corrector in python. Currently supports english and polish, but you can easily add new languages.
+
+Based on: https://github.com/phatpiglet/autocorrect
 
 Installation
 ============
