@@ -4,28 +4,23 @@ from copy import deepcopy
 PATH = os.path.abspath(os.path.dirname(__file__))
 SOURCE_DIR = os.path.split(PATH)[0]
 sys.path.append(SOURCE_DIR)
-from autocorrect import spell, spell_sentence
-from autocorrect.word import known
-from autocorrect.nlp_parser import NLP_COUNTS
+from autocorrect import Speller
 
-MSG = 'spell({}) => {} ({}); should be {} ({})'
-RESULT = 'bad: {}/{}, % correct: {}, unknown: {}, secs: {}'
+MSG = 'spell({}) => {}; should be {}'
+RESULT = 'bad: {}/{}, % correct: {}, secs: {}'
 
-def spelltest(tested_function, tests, verbose=False):
-    n, bad, unknown, start = 0, 0, 0, time.time()
+def spelltest(speller, tests, verbose=False):
+    n, bad, start = 0, 0, time.time()
     for target, incorrect_spellings in tests.items():
         for incorrect_spelling in incorrect_spellings.split('|'):
             n += 1
-            w = tested_function(incorrect_spelling)
+            w =speller(incorrect_spelling)
             if w != target:
                 bad += 1
-                if not known([target]):
-                    unknown += 1
                 if verbose:
-                    print(MSG.format(incorrect_spelling, w, NLP_COUNTS[w],
-                                     target, NLP_COUNTS[target]))
+                    print(MSG.format(incorrect_spelling, w, target))
     return RESULT.format(bad, n, int(100. - 100. * bad / n), 
-                         unknown, int(time.time() - start))
+                         int(time.time() - start))
 
 tests1 = {'access': 'acess',
           'accommodation': 'accomodation|acommodation|acomodation',
@@ -38,7 +33,6 @@ tests1 = {'access': 'acess',
           'benefit': 'benifit',
           'benefits': 'benifits',
           'between': 'beetween',
-          'bicycle': 'bicycal|bycicle|bycycle',
           'biscuits': 'biscits|biscuts|bisquits|buiscits|buiscuts',
           'built': 'biult',
           'career': 'carrer',
@@ -79,7 +73,6 @@ tests1 = {'access': 'acess',
           'parallel': 'paralel|paralell|parrallel|parralell|parrallell',
           'particular': 'particulaur',
           'perhaps': 'perhapse',
-          'personnel': 'personnell',
           'position': 'possition',
           'possible': 'possable',
           'pronunciation': 'pronounciation',
@@ -482,5 +475,6 @@ sentences = {
 
 
 if __name__ == '__main__':
+    spell = Speller(lang='en')
     print(spelltest(spell, tests1, verbose=True))
-    print(spelltest(spell_sentence, sentences, verbose=True))
+    print(spelltest(spell, sentences, verbose=True))

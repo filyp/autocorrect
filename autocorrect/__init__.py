@@ -1,34 +1,62 @@
-# Python 3 Spelling Corrector
-#
-# Copyright 2014 Jonas McCallum.
-# Updated for Python 3, based on Peter Norvig's
-# 2007 version: http://norvig.com/spell-correct.html
-#
-# Open source, MIT license
-# http://www.opensource.org/licenses/mit-license.php
-"""
-Spell function
-
-Author: Jonas McCallum
-https://github.com/foobarmus/autocorrect
-
-"""
+import json
 import re
+import tarfile
+from contextlib import closing
 
-from autocorrect.nlp_parser import NLP_COUNTS
-from autocorrect.word import Word, common, exact, known, get_case
+from autocorrect.constants import word_regexes
+from autocorrect.typos import Word
 
 
-def spell(word):
-    """most likely correction for everything up to a double typo"""
-    w = Word(word)
-    candidates = (common([word]) or exact([word]) or known([word]) or
-                  known(w.typos()) or common(w.double_typos()) or
-                  [word])
-    correction = max(candidates, key=NLP_COUNTS.get)
-    return get_case(word, correction)
+def load_from_tar(archive_name, file_name='word_count.json'):
+    with closing(tarfile.open(archive_name, 'r:gz')) as tarf:
+        with closing(tarf.extractfile(file_name)) as file:
+            return json.load(file)
 
-def spell_sentence(sentence):
-    return re.sub(r'[A-Za-z]+',
-                  lambda match: spell(match.group(0)),
-                  sentence)
+
+class Speller:
+    def __init__(self, threshold=0, lang='en'):
+        self.threshold = threshold
+        tarfile = f'data/{lang}.tar.gz'
+        self.nlp_data = load_from_tar(tarfile)
+        self.lang = lang
+
+        if threshold > 0:
+            print(f'Original number of words: {len(self.nlp_data)}')
+            self.nlp_data = {k: v for k, v in self.nlp_data.items() 
+                            if v > threshold}
+            print(f'After applying threshold: {len(self.nlp_data)}')
+
+    def existing(self, words):
+        """{'the', 'teh'} => {'the'}"""
+        return set(word for word in words
+                   if word in self.nlp_data)
+
+    def autocorrect_word(self, word):
+        """most likely correction for everything up to a double typo"""
+        w = Word(word, self.lang)
+        candidates = (self.existing([word]) or 
+                      self.existing(w.typos()) or 
+                      self.existing(w.double_typos()) or 
+                      [word])
+        return max(candidates, key=self.nlp_data.get)
+
+    def autocorrect_sentence(self, sentence):
+        return re.sub(word_regexes[self.lang],
+                      lambda match: self.autocorrect_word(match.group(0)),
+                      sentence)
+
+    __call__ = autocorrect_sentence
+
+
+# for backward compatibility
+class LazySpeller:
+    def __init__(self):
+        self.speller = None
+    
+    def __call__(self, sentence):
+        print('autocorrect.spell is deprecated, use autocorrect.Speller instead')
+        if self.speller is None:
+            self.speller = Speller()
+        return self.speller(sentence)
+
+spell = LazySpeller()
