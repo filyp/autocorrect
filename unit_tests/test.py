@@ -488,5 +488,3 @@ if __name__ == '__main__':
     print(spelltest(spell, sentences))
     spell = Speller(lang='pl')
     print(spelltest(spell, polish))
-
-# TODO python2 doens't support correction with polish special chars

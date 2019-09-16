@@ -24,7 +24,7 @@ Examples
     >>> spell("I'm not sleapy and tehre is no place I'm giong to.")
     "I'm not sleepy and there is no place I'm going to."
 
-Adding new langeages
+Adding new languages
 ========
 First add special letters in autocorrect/constants.py.
 
@@ -51,3 +51,7 @@ After that:
 Contribute
 ==========
 https://github.com/fifimajster/autocorrect
+
+Todo
+==========
+Python2 doesn't support correction with polish special chars.
