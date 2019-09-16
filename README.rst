@@ -46,7 +46,7 @@ After that:
 
 .. code-block:: bash
 
-    tar -zcvf data/ru.tar.gz word_count.json
+    tar -zcvf autocorrect/data/ru.tar.gz word_count.json
 
 Contribute
 ==========
