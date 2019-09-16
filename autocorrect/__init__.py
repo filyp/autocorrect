@@ -1,10 +1,13 @@
 import json
 import re
 import tarfile
+import os
 from contextlib import closing
 
 from autocorrect.constants import word_regexes
 from autocorrect.typos import Word
+
+PATH = os.path.abspath(os.path.dirname(__file__))
 
 
 def load_from_tar(archive_name, file_name='word_count.json'):
@@ -16,15 +19,18 @@ def load_from_tar(archive_name, file_name='word_count.json'):
 class Speller:
     def __init__(self, threshold=0, lang='en'):
         self.threshold = threshold
-        tarfile = f'autocorrect/data/{lang}.tar.gz'
+        tarfile = os.path.join(PATH, 
+                               'data/{}.tar.gz'.format(lang))
         self.nlp_data = load_from_tar(tarfile)
         self.lang = lang
 
         if threshold > 0:
-            print(f'Original number of words: {len(self.nlp_data)}')
+            print('Original number of words: {}'
+                    .format(len(self.nlp_data)))
             self.nlp_data = {k: v for k, v in self.nlp_data.items() 
                             if v > threshold}
-            print(f'After applying threshold: {len(self.nlp_data)}')
+            print('After applying threshold: {}'
+                    .format(len(self.nlp_data)))
 
     def existing(self, words):
         """{'the', 'teh'} => {'the'}"""
