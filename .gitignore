@@ -1,4 +1,3 @@
 *.pyc
-autocorrect/data/*
 dist/*
 MANIFEST
