@@ -70,17 +70,8 @@ class Word(object):
 
     def typos(self):
         """letter combinations one typo away from word"""
-        for e in self._deletes():
-            yield e
-        for e in self._transposes():
-            yield e
-        for e in self._replaces():
-            yield e
-        for e in self._inserts():
-            yield e
+        return chain(self._deletes(), self._transposes(), self._replaces(), self._inserts())
 
     def double_typos(self):
         """letter combinations two typos away from word"""
-        for e1 in self.typos():
-            for e2 in Word(e1).typos():
-                yield e2
+        return chain.from_iterable(Word(e1).typos() for e1 in self.typos())
