@@ -48,25 +48,19 @@ class Word(object):
 
     def _deletes(self):
         """th"""
-        for a, b in self.slices[:-1]:
-            yield concat(a, b[1:])
+        return (concat(a, b[1:]) for a, b in self.slices[:-1])
 
     def _transposes(self):
         """teh"""
-        for a, b in self.slices[:-2]:
-            yield concat(a, reversed(b[:2]), b[2:])
+        return (concat(a, reversed(b[:2]), b[2:]) for a, b in self.slices[:-2])
 
     def _replaces(self):
         """tge"""
-        for a, b in self.slices[:-1]:
-            for c in self.alphabet:
-                yield concat(a, c, b[1:])
+        return (concat(a, c, b[1:]) for a, b in self.slices[:-1] for c in self.alphabet)
 
     def _inserts(self):
         """thwe"""
-        for a, b in self.slices:
-            for c in self.alphabet:
-                yield concat(a, c, b)
+        return (concat(a, c, b) for a, b in self.slices for c in self.alphabet)
 
     def typos(self):
         """letter combinations one typo away from word"""
