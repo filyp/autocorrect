@@ -29,6 +29,7 @@ def concat(*args):
 
 class Word(object):
     """container for word-based methods"""
+    __slots__ = ['slices', 'word', 'alphabet']
 
     def __init__(self, word, lang='en'):
         """
