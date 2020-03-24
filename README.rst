@@ -16,13 +16,13 @@ Examples
 .. code-block:: python
 
     >>> from autocorrect import Speller
+    >>> spell = Speller()
+    >>> spell("I'm not sleapy and tehre is no place I'm giong to.")
+    "I'm not sleepy and there is no place I'm going to."
+
     >>> spell = Speller(lang='pl')
     >>> spell('ptaaki latatją kluczmm')                                         
     'ptaki latają kluczem'
-
-    >>> spell = Speller(lang='en')
-    >>> spell("I'm not sleapy and tehre is no place I'm giong to.")
-    "I'm not sleepy and there is no place I'm going to."
 
 Adding new languages
 ========
@@ -54,4 +54,5 @@ https://github.com/fifimajster/autocorrect
 
 Todo
 ==========
+Capitalized words shouldn'y be corrected into uncapitalized.
 Python2 doesn't support correction with polish special chars.
