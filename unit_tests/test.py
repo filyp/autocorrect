@@ -24,14 +24,14 @@ def spelltest(speller, tests, verbose=True):
         print('bad: {}/{}'.format(bad, n))
 
 
-def benchmark(speller, tests, repetitions=20):
+def benchmark(name, speller, tests, repetitions=20):
     current_min = float('inf')
     for _ in range(repetitions):
         start = time.time()
         spelltest(speller, tests, verbose=False)
         duration = time.time() - start
         current_min = min(duration, current_min)
-    print('secs: {:.3f}'.format(current_min))
+    print('{:<20} {:.3f}s'.format(name, current_min))
 
 
 english1 = {'access': 'acess',
@@ -500,8 +500,7 @@ if __name__ == '__main__':
     spell_pl = Speller(lang='pl')
     spelltest(spell_pl, polish)
 
-    print('\nbenchmark for english sentences:')
-    benchmark(spell_en, sentences)
-
-    print('\nbenchmark for polish words:')
-    benchmark(spell_pl, polish)
+    print('\nbenchmarks:')
+    benchmark('english words', spell_en, english1)
+    benchmark('english sentences', spell_en, sentences)
+    benchmark('polish words', spell_pl, polish)
