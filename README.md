@@ -55,5 +55,5 @@ https://github.com/fifimajster/autocorrect
 Todo
 ==========
 - capitalized words shouldn't be corrected into uncapitalized
-- some words are corrected to implausible versions
+- some words are corrected to implausible versions (see english2 in unit_tests)
 - python2 doesn't support correction with polish special chars
