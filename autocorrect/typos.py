@@ -29,6 +29,7 @@ def concat(*args):
 
 class Word(object):
     """container for word-based methods"""
+    __slots__ = ['slices', 'word', 'alphabet']
 
     def __init__(self, word, lang='en'):
         """
@@ -47,39 +48,24 @@ class Word(object):
 
     def _deletes(self):
         """th"""
-        for a, b in self.slices[:-1]:
-            yield concat(a, b[1:])
+        return (concat(a, b[1:]) for a, b in self.slices[:-1])
 
     def _transposes(self):
         """teh"""
-        for a, b in self.slices[:-2]:
-            yield concat(a, reversed(b[:2]), b[2:])
+        return (concat(a, reversed(b[:2]), b[2:]) for a, b in self.slices[:-2])
 
     def _replaces(self):
         """tge"""
-        for a, b in self.slices[:-1]:
-            for c in self.alphabet:
-                yield concat(a, c, b[1:])
+        return (concat(a, c, b[1:]) for a, b in self.slices[:-1] for c in self.alphabet)
 
     def _inserts(self):
         """thwe"""
-        for a, b in self.slices:
-            for c in self.alphabet:
-                yield concat(a, c, b)
+        return (concat(a, c, b) for a, b in self.slices for c in self.alphabet)
 
     def typos(self):
         """letter combinations one typo away from word"""
-        for e in self._deletes():
-            yield e
-        for e in self._transposes():
-            yield e
-        for e in self._replaces():
-            yield e
-        for e in self._inserts():
-            yield e
+        return chain(self._deletes(), self._transposes(), self._replaces(), self._inserts())
 
     def double_typos(self):
         """letter combinations two typos away from word"""
-        for e1 in self.typos():
-            for e2 in Word(e1).typos():
-                yield e2
+        return chain.from_iterable(Word(e1).typos() for e1 in self.typos())
