@@ -8,23 +8,33 @@ SOURCE_DIR = os.path.split(PATH)[0]
 sys.path.append(SOURCE_DIR)
 from autocorrect import Speller
 
-MSG = 'spell({}) => {}; should be {}'
-RESULT = 'bad: {}/{}, % correct: {}, secs: {}'
 
 def spelltest(speller, tests, verbose=True):
-    n, bad, start = 0, 0, time.time()
+    n, bad = 0, 0
     for target, incorrect_spellings in tests.items():
         for incorrect_spelling in incorrect_spellings.split('|'):
             n += 1
-            w =speller(incorrect_spelling)
+            w = speller(incorrect_spelling)
             if w != target:
                 bad += 1
                 if verbose:
-                    print(MSG.format(incorrect_spelling, w, target))
-    return RESULT.format(bad, n, int(100. - 100. * bad / n), 
-                         int(time.time() - start))
+                    print('spell({}) => {}; should be {}'.format(
+                        incorrect_spelling, w, target))
+    if verbose:
+        print('bad: {}/{}'.format(bad, n))
 
-tests1 = {'access': 'acess',
+
+def benchmark(speller, tests, repetitions=20):
+    current_min = float('inf')
+    for _ in range(repetitions):
+        start = time.time()
+        spelltest(speller, tests, verbose=False)
+        duration = time.time() - start
+        current_min = min(duration, current_min)
+    print('secs: {:.3f}'.format(current_min))
+
+
+english1 = {'access': 'acess',
           'accommodation': 'accomodation|acommodation|acomodation',
           'addressable': 'addresable',
           'arranged': 'aranged|arrainged',
@@ -102,7 +112,7 @@ tests1 = {'access': 'acess',
           'visitors': 'vistors',
           'voting': 'voteing'}
 
-tests2 = {'forbidden': 'forbiden',
+english2 = {'forbidden': 'forbiden',
           'decisions': 'deciscions|descisions',
           'supposedly': 'supposidly',
           'embellishing': 'embelishing',
@@ -483,8 +493,15 @@ polish = {
 
 
 if __name__ == '__main__':
-    spell = Speller(lang='en')
-    print(spelltest(spell, tests1))
-    print(spelltest(spell, sentences))
-    spell = Speller(lang='pl')
-    print(spelltest(spell, polish))
+    spell_en = Speller(lang='en')
+    spelltest(spell_en, english1)
+    spelltest(spell_en, sentences)
+
+    spell_pl = Speller(lang='pl')
+    spelltest(spell_pl, polish)
+
+    print('\nbenchmark for english sentences:')
+    benchmark(spell_en, sentences)
+
+    print('\nbenchmark for polish words:')
+    benchmark(spell_pl, polish)
