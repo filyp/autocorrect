@@ -1,18 +1,14 @@
-===========
-autocorrect
-===========
+# Autocorrect
 Spelling corrector in python. Currently supports english and polish, but you can easily add new languages.
 
 Based on: https://github.com/phatpiglet/autocorrect
 
-Installation
-============
+# Installation
 ```bash
 pip install autocorrect
 ```
 
-Examples
-========
+# Examples
 ```python
 >>> from autocorrect import speller
 >>> spell = Speller()
@@ -24,8 +20,7 @@ Examples
 'ptaki latają kluczem'
 ```
 
-Adding new languages
-========
+# Adding new languages
 First add special letters in autocorrect/constants.py.
 
 Now, you need a bunch of text. Easiest way is to download wikipedia.
@@ -48,12 +43,10 @@ After that:
 tar -zcvf autocorrect/data/ru.tar.gz word_count.json
 ```
 
-Contribute
-==========
+# Contribute
 https://github.com/fifimajster/autocorrect
 
-Todo
-==========
+# Todo
 - capitalized words shouldn't be corrected into uncapitalized
 - some words are corrected to implausible versions (see english2 in unit_tests)
 - python2 doesn't support correction with polish special chars
