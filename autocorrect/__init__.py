@@ -19,13 +19,31 @@ languages_url = "https://github.com/fsondej/autocorrect/raw/master/\
 optional_languages/{}.tar.gz"
 
 
+# credit: https://stackoverflow.com/questions/43370284/why-function-works-properly-without-specifying-parameters
+class ProgressBar:
+    def __init__(self):
+        self.old_percent = 0
+        print('-' * 50)
+
+    def download_progress_hook(self, count, blockSize, totalSize):
+        percent = int(count * blockSize * 100 / totalSize)
+        if percent >= 2 + self.old_percent:
+            self.old_percent = percent
+            # print(percent, '%')
+            print('>', end='')
+            sys.stdout.flush()
+        if percent == 100:
+            print('\ndone!')
+
+
 def load_from_tar(lang, file_name='word_count.json'):
     archive_name = os.path.join(PATH, 'data/{}.tar.gz'.format(lang))
 
     if not os.path.isfile(archive_name):
         print('dictionary for this language not found, downloading...')
         url = languages_url.format(lang)
-        urlretrieve(url, archive_name)
+        progress = ProgressBar()
+        urlretrieve(url, archive_name, progress.download_progress_hook)
 
     with closing(tarfile.open(archive_name, 'r:gz')) as tarf:
         with closing(tarf.extractfile(file_name)) as file:
