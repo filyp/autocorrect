@@ -501,6 +501,5 @@ if __name__ == '__main__':
     spelltest(spell_pl, polish)
 
     print('\nbenchmarks:')
-    benchmark('english words', spell_en, english1)
     benchmark('english sentences', spell_en, sentences)
     benchmark('polish words', spell_pl, polish)

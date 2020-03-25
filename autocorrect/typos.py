@@ -29,7 +29,7 @@ def concat(*args):
 
 class Word(object):
     """container for word-based methods"""
-    __slots__ = ['slices', 'word', 'alphabet']
+    __slots__ = ['slices', 'word', 'alphabet']  # optimization
 
     def __init__(self, word, lang='en'):
         """
@@ -70,8 +70,12 @@ class Word(object):
 
     def typos(self):
         """letter combinations one typo away from word"""
-        return chain(self._deletes(), self._transposes(), self._replaces(), self._inserts())
+        return chain(self._deletes(),
+                     self._transposes(),
+                     self._replaces(),
+                     self._inserts())
 
     def double_typos(self):
         """letter combinations two typos away from word"""
-        return chain.from_iterable(Word(e1).typos() for e1 in self.typos())
+        return chain.from_iterable(
+            Word(e1).typos() for e1 in self.typos())
