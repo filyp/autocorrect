@@ -1,16 +1,33 @@
 import json
-import re
-import tarfile
 import os
+import re
+import sys
+import tarfile
 from contextlib import closing
 
 from autocorrect.constants import word_regexes
 from autocorrect.typos import Word
 
+if sys.version_info[0] == 3:
+    from urllib.request import urlretrieve
+else:
+    from urllib import urlretrieve
+
+
 PATH = os.path.abspath(os.path.dirname(__file__))
+languages_url = "https://github.com/fsondej/autocorrect/raw/master/autocorrect/\
+optional_languages/{}.tar.gz"
 
 
-def load_from_tar(archive_name, file_name='word_count.json'):
+def load_from_tar(lang, file_name='word_count.json'):
+    archive_name = os.path.join(PATH, 'data/{}.tar.gz'.format(lang))
+
+    if not os.path.isfile(archive_name):
+        print('dictionary for this language not found, downloading...')
+        url = languages_url.format(lang)
+        path = os.path.join(PATH, '../optional_languages')
+        urlretrieve(url, path)
+
     with closing(tarfile.open(archive_name, 'r:gz')) as tarf:
         with closing(tarf.extractfile(file_name)) as file:
             return json.load(file)
@@ -19,9 +36,7 @@ def load_from_tar(archive_name, file_name='word_count.json'):
 class Speller:
     def __init__(self, threshold=0, lang='en'):
         self.threshold = threshold
-        tarfile = os.path.join(PATH,
-                               'data/{}.tar.gz'.format(lang))
-        self.nlp_data = load_from_tar(tarfile)
+        self.nlp_data = load_from_tar(lang)
         self.lang = lang
 
         if threshold > 0:
