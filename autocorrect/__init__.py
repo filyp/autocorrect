@@ -39,12 +39,25 @@ class Speller:
 
     def autocorrect_word(self, word):
         """most likely correction for everything up to a double typo"""
-        w = Word(word, self.lang)
-        candidates = (self.existing([word]) or
-                      self.existing(w.typos()) or
-                      self.existing(w.double_typos()) or
-                      [word])
-        return max(candidates, key=self.nlp_data.get)
+        def get_candidates(word):
+            w = Word(word, self.lang)
+            candidates = (self.existing([word]) or
+                          self.existing(w.typos()) or
+                          self.existing(w.double_typos()) or
+                          [word])
+            return [(self.nlp_data.get(c), c) for c in candidates]
+
+        candidates = get_candidates(word)
+
+        # in case the word is capitalized
+        if word[0].isupper():
+            candidates += get_candidates(word.lower())
+
+        best_word = max(candidates)[1]
+
+        if word[0].isupper():
+            best_word = best_word.capitalize()
+        return best_word
 
     def autocorrect_sentence(self, sentence):
         return re.sub(word_regexes[self.lang],
