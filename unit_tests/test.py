@@ -4,11 +4,10 @@ import os
 import sys
 import time
 
-from autocorrect import Speller
-
 PATH = os.path.abspath(os.path.dirname(__file__))
 SOURCE_DIR = os.path.split(PATH)[0]
 sys.path.append(SOURCE_DIR)
+from autocorrect import Speller
 
 
 def spelltest(speller, tests, verbose=True):
