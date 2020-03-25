@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(name='autocorrect',
       version='1.0.0',
       packages=['autocorrect'],
-      package_data={'autocorrect': ['data/*.tar.gz']},
+      package_data={'autocorrect': ['data/en.tar.gz']},
       description='Spelling Corrector',
       author='Jonas McCallum, Filip Sondej',
       author_email='filipsondej@protonmail.com',
