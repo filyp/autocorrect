@@ -15,7 +15,7 @@ else:
 
 
 PATH = os.path.abspath(os.path.dirname(__file__))
-languages_url = "https://github.com/fsondej/autocorrect/raw/master/autocorrect/\
+languages_url = "https://github.com/fsondej/autocorrect/raw/master/\
 optional_languages/{}.tar.gz"
 
 
@@ -25,8 +25,7 @@ def load_from_tar(lang, file_name='word_count.json'):
     if not os.path.isfile(archive_name):
         print('dictionary for this language not found, downloading...')
         url = languages_url.format(lang)
-        path = os.path.join(PATH, '../optional_languages')
-        urlretrieve(url, path)
+        urlretrieve(url, archive_name)
 
     with closing(tarfile.open(archive_name, 'r:gz')) as tarf:
         with closing(tarf.extractfile(file_name)) as file:
