@@ -19,14 +19,6 @@ from itertools import chain
 from autocorrect.constants import alphabets
 
 
-def concat(*args):
-    """reversed('th'), 'e' => 'hte'"""
-    try:
-        return ''.join(args)
-    except TypeError:
-        return ''.join(chain.from_iterable(args))
-
-
 class Word(object):
     """container for word-based methods"""
     __slots__ = ['slices', 'word', 'alphabet']  # optimization
@@ -49,24 +41,24 @@ class Word(object):
     def _deletes(self):
         """th"""
         for a, b in self.slices[:-1]:
-            yield concat(a, b[1:])
+            yield ''.join((a, b[1:]))
 
     def _transposes(self):
         """teh"""
         for a, b in self.slices[:-2]:
-            yield concat(a, reversed(b[:2]), b[2:])
+            yield ''.join((a, b[1], b[0], b[2:]))
 
     def _replaces(self):
         """tge"""
         for a, b in self.slices[:-1]:
             for c in self.alphabet:
-                yield concat(a, c, b[1:])
+                yield ''.join((a, c, b[1:]))
 
     def _inserts(self):
         """thwe"""
         for a, b in self.slices:
             for c in self.alphabet:
-                yield concat(a, c, b)
+                yield ''.join((a, c, b))
 
     def typos(self):
         """letter combinations one typo away from word"""
