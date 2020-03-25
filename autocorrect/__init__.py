@@ -60,7 +60,8 @@ class LazySpeller:
         self.speller = None
 
     def __call__(self, sentence):
-        print('autocorrect.spell is deprecated, use autocorrect.Speller instead')
+        print('autocorrect.spell is deprecated, \
+            use autocorrect.Speller instead')
         if self.speller is None:
             self.speller = Speller()
         return self.speller(sentence)
