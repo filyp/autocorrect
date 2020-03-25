@@ -23,7 +23,7 @@ optional_languages/{}.tar.gz"
 class ProgressBar:
     def __init__(self):
         self.old_percent = 0
-        print('-' * 50)
+        print('_' * 50)
 
     def download_progress_hook(self, count, blockSize, totalSize):
         percent = int(count * blockSize * 100 / totalSize)
