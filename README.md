@@ -25,7 +25,7 @@ First add special letters in autocorrect/constants.py.
 
 Now, you need a bunch of text. Easiest way is to download wikipedia.
 For example for russian go to:
-https://dumps.wikimedia.org/enwiki/latest/ 
+https://dumps.wikimedia.org/ruwiki/latest/ 
 and download ruwiki-latest-pages-articles.xml.bz2
 
 ```
@@ -41,6 +41,16 @@ After that:
 
 ```
 tar -zcvf autocorrect/data/ru.tar.gz word_count.json
+```
+
+# Speed
+```python
+%timeit spell('Hey! Mr. Tambourine Man, play a song for me,')
+250 µs ± 10.2 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+%timeit spell("I'm not sleapy and tehre is no place I'm giong to.")
+410 µs ± 6.84 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+%timeit spell("There is no comin to consiousnes without pain.")
+186 ms ± 1.59 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
 ```
 
 # Contribute
