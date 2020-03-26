@@ -10,7 +10,7 @@ pip install autocorrect
 
 # Examples
 ```python
->>> from autocorrect import speller
+>>> from autocorrect import Speller
 >>> spell = Speller()
 >>> spell("I'm not sleapy and tehre is no place I'm giong to.")
 "I'm not sleepy and there is no place I'm going to."
@@ -45,8 +45,6 @@ tar -zcvf autocorrect/data/ru.tar.gz word_count.json
 
 # Speed
 ```python
-%timeit spell('Hey! Mr. Tambourine Man, play a song for me,')
-250 µs ± 10.2 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 %timeit spell("I'm not sleapy and tehre is no place I'm giong to.")
 410 µs ± 6.84 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 %timeit spell("There is no comin to consiousnes without pain.")
@@ -59,3 +57,4 @@ https://github.com/fifimajster/autocorrect
 # Todo
 - some words are corrected to implausible versions (see english2 in unit_tests)
 - python2 doesn't support correction with polish special chars
+- option to disable double typer for speed
