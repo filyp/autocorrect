@@ -482,9 +482,66 @@ polish = {
 }
 
 
+test_words_tr = {
+    'yanlış': 'yanlş|yanls',
+    'gidiyor': 'gidiyr|gidiyro',
+    'geleceğim': 'gelecegim',
+    'yapacak': 'yapıcak',
+    'sevecek': 'sevicek',
+    'muhakkak': 'muhakak|muakkak|muakak',
+    'yapacağım': 'yapacagim',
+    'yapacaktık': 'yapacaktik',
+    'yapılacaktı': 'yapılcaktı',
+    'salgın': 'salgin',
+    'komisyonu': 'komidyonu|komilyonu',
+    'kelimesinin': 'kelmesinin',
+    'bilgisini': 'bilgiini|bilgisin',
+    'tarafından': 'tarafndan|tarafindan',
+    'işgal': 'şigal',
+    'taraf': 'teraf',
+    'ekonomik': 'ekonomk',
+    'sıkıntılar': 'sıkıntıler',
+    'anlaşılacağı': 'anlaşlacağı',
+    'ettirdi': 'ettird',
+}
+
+test_words_ru = {
+    'убийства':'убийста',
+    'американские':'америкнские',
+    'приговорённый':'пргговорённый',
+    'председательствовавший':'председательствовавши',
+    'Разработана':'Разработаа',
+    'широкий':'ширркий',
+    'тридцать':'тридцатьь',
+    'удерживала':'удержииала',
+    'возглавила':'вззглавила',
+    'написанной':'напссанной',
+}
+
+test_words_uk = {
+    'положення':'положеннн',
+    'міжконтинентальної':'міжконтннентальноi|мїxконтинентальної',
+    'журналу':'xурналу',
+    'Боснію':'Босніo',
+    'письменник':'письмениик',
+    'повсякденного':'повсякденноо',
+    'алегоричні':'алегоринні',
+    'сцени':'сценн|сцеии',
+    'названий':'названйй',
+    'культуролог':'культуролг',
+}
+
+
 if __name__ == '__main__':
     spell = Speller(lang='en')
     print(spelltest(spell, tests1))
     print(spelltest(spell, sentences))
     spell = Speller(lang='pl')
     print(spelltest(spell, polish))
+    spell = Speller(lang='tr')
+    print(spelltest(spell, test_words_tr))
+    spell = Speller(lang='ru')
+    print(spelltest(spell, test_words_ru))
+    spell = Speller(lang='uk')
+    print(spelltest(spell, test_words_uk))
+
