@@ -58,4 +58,4 @@ https://github.com/fifimajster/autocorrect
 - some words are corrected to implausible versions (see english2 in unit_tests)
 - python2 doesn't support correction with polish special chars
 - option to disable double typer for speed
-- it looks that loading spellers multiple times may be leaking memory, maybe store words untared
+- it looks that loading spellers multiple times may be leaking memory
