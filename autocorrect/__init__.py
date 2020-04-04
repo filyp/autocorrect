@@ -62,7 +62,7 @@ class Speller:
             print('Original number of words: {}'
                   .format(len(self.nlp_data)))
             self.nlp_data = {k: v for k, v in self.nlp_data.items()
-                             if v > threshold}
+                             if v >= threshold}
             print('After applying threshold: {}'
                   .format(len(self.nlp_data)))
 

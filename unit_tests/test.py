@@ -10,7 +10,7 @@ sys.path.append(SOURCE_DIR)
 from autocorrect import Speller
 
 
-def spelltest(speller, tests, verbose=True):
+def spelltest(speller, tests, verbose=2):
     n, bad = 0, 0
     for target, incorrect_spellings in tests.items():
         for incorrect_spelling in incorrect_spellings.split('|'):
@@ -18,10 +18,10 @@ def spelltest(speller, tests, verbose=True):
             w = speller(incorrect_spelling)
             if w != target:
                 bad += 1
-                if verbose:
+                if verbose >= 2:
                     print('spell({}) => {}; should be {}'.format(
                         incorrect_spelling, w, target))
-    if verbose:
+    if verbose >= 1:
         print('bad: {}/{}'.format(bad, n))
 
 
@@ -29,7 +29,7 @@ def benchmark(name, speller, tests, repetitions=20):
     current_min = float('inf')
     for _ in range(repetitions):
         start = time.time()
-        spelltest(speller, tests, verbose=False)
+        spelltest(speller, tests, verbose=0)
         duration = time.time() - start
         current_min = min(duration, current_min)
     print('{:<20} {:.3f}s'.format(name, current_min))
@@ -486,21 +486,74 @@ sentences = {
     "I'm not sleapy and tehre is no place I'm giong to."
 }
 
-polish = {
-    'gżegżółka': 'grzegżółka',
-    'pszczoła': 'przczoua',
-    'kosodrzewina': 'kosodzewima',
+optional_language_tests = {
+    'pl': {
+        'gżegżółka': 'grzegżółka',
+        'pszczoła': 'przczoua',
+        'kosodrzewina': 'kosodzewima',
+    },
+    'tr': {
+        'yanlış': 'yanlş|yanls',
+        'gidiyor': 'gidiyr|gidiyro',
+        'geleceğim': 'gelecegim',
+        'yapacak': 'yapıcak',
+        'sevecek': 'sevicek',
+        'muhakkak': 'muhakak|muakkak|muakak',
+        'yapacağım': 'yapacagim',
+        'yapacaktık': 'yapacaktik',
+        'yapılacaktı': 'yapılcaktı',
+        'salgın': 'salgin',
+        'komisyonu': 'komidyonu|komilyonu',
+        'kelimesinin': 'kelmesinin',
+        'bilgisini': 'bilgiini|bilgisin',
+        'tarafından': 'tarafndan|tarafindan',
+        'işgal': 'şigal',
+        'taraf': 'teraf',
+        'ekonomik': 'ekonomk',
+        'sıkıntılar': 'sıkıntıler',
+        'anlaşılacağı': 'anlaşlacağı',
+        'ettirdi': 'ettird',
+    },
+    'ru': {
+        'убийства': 'убийста',
+        'американские': 'америкнские',
+        'приговорённый': 'пргговорённый',
+        'председательствовавший': 'председательствовавши',
+        'Разработана': 'Разработаа',
+        'широкий': 'ширркий',
+        'тридцать': 'тридцатьь',
+        'удерживала': 'удержииала',
+        'возглавила': 'вззглавила',
+        'написанной': 'напссанной',
+    },
+    'uk': {
+        'положення': 'положеннн',
+        'міжконтинентальної': 'міжконтннентальноi|мїxконтинентальної',
+        'журналу': 'xурналу',
+        'Боснію': 'Босніo',
+        'письменник': 'письмениик',
+        'повсякденного': 'повсякденноо',
+        'алегоричні': 'алегоринні',
+        'сцени': 'сценн|сцеии',
+        'названий': 'названйй',
+        'культуролог': 'культуролг',
+    }
 }
 
-
 if __name__ == '__main__':
-    spell_en = Speller(lang='en')
-    spelltest(spell_en, english1)
-    spelltest(spell_en, sentences)
+    spell = Speller(lang='en')
+    spelltest(spell, english1)
+    spelltest(spell, sentences)
 
-    spell_pl = Speller(lang='pl')
-    spelltest(spell_pl, polish)
+    for lang, test in optional_language_tests.items():
+        print('\n' + lang)
+        spell = Speller(lang=lang)
+        dict_size = sys.getsizeof(spell.nlp_data)
+        print('size: {:.0f}MB'.format(dict_size / 1024 ** 2))
+        spelltest(spell, test, verbose=1)
 
     print('\nbenchmarks:')
-    benchmark('english sentences', spell_en, sentences)
-    benchmark('polish words', spell_pl, polish)
+    spell = Speller(lang='pl')
+    benchmark('english sentences', spell, sentences)
+    spell = Speller(lang='pl')
+    benchmark('polish words', spell, optional_language_tests['pl'])

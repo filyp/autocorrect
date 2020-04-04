@@ -1,5 +1,5 @@
 *.pyc
-autocorrect/data/*
 dist/*
 MANIFEST
 .vscode
+autocorrect/data/*
