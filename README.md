@@ -57,5 +57,8 @@ https://github.com/fifimajster/autocorrect
 # Todo
 - some words are corrected to implausible versions (see english2 in unit_tests)
 - python2 doesn't support correction with polish special chars
-- option to disable double typer for speed
+- option to disable double typos for speed
 - it looks that loading spellers multiple times may be leaking memory
+- in double typos we check same words twice
+- clean repo: https://stackoverflow.com/questions/2116778/reduce-git-repository-size
+- maybe use LFS
