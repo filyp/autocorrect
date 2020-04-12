@@ -52,7 +52,7 @@ tar -zcvf autocorrect/data/es.tar.gz word_count.json
 ```
 
 # Contribute
-https://github.com/fifimajster/autocorrect
+https://github.com/fsondej/autocorrect
 
 # Todo
 - some words are corrected to implausible versions (see english2 in unit_tests)
