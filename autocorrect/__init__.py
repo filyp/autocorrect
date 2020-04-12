@@ -53,9 +53,9 @@ def load_from_tar(lang, file_name='word_count.json'):
 
 
 class Speller:
-    def __init__(self, threshold=0, lang='en'):
+    def __init__(self, threshold=0, lang='en', nlp_data=None):
         self.threshold = threshold
-        self.nlp_data = load_from_tar(lang)
+        self.nlp_data = load_from_tar(lang) if nlp_data is None else nlp_data
         self.lang = lang
 
         if threshold > 0:
