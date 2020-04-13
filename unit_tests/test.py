@@ -541,15 +541,17 @@ optional_language_tests = {
 }
 
 if __name__ == '__main__':
+    # those two should pass 100%, they check if nothing got broken
     spell = Speller(lang='en')
     spelltest(spell, english1)
     spelltest(spell, sentences)
 
+    # the rest doesn't have to pass 100%, they check the accuracy of correction
+    # spelltest(spell, english2)
+
     for lang, test in optional_language_tests.items():
         print('\n' + lang)
         spell = Speller(lang=lang)
-        dict_size = sys.getsizeof(spell.nlp_data)
-        print('size: {:.0f}MB'.format(dict_size / 1024 ** 2))
         spelltest(spell, test, verbose=1)
 
     print('\nbenchmarks:')
