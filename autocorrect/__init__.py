@@ -79,18 +79,19 @@ class Speller:
                           self.existing(w.typos()) or
                           self.existing(w.double_typos()) or
                           [word])
-            return [(self.nlp_data.get(c), c) for c in candidates]
+            return [(self.nlp_data.get(c, 0), c) for c in candidates]
 
         candidates = get_candidates(word)
 
         # in case the word is capitalized
         if word[0].isupper():
-            candidates += get_candidates(word.lower())
+            decapitalized = word[0].lower() + word[1:]
+            candidates += get_candidates(decapitalized)
 
         best_word = max(candidates)[1]
 
         if word[0].isupper():
-            best_word = best_word.capitalize()
+            best_word = best_word[0].upper() + best_word[1:]
         return best_word
 
     def autocorrect_sentence(self, sentence):

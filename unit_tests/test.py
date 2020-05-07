@@ -486,6 +486,13 @@ sentences = {
     "I'm not sleapy and tehre is no place I'm giong to."
 }
 
+upper = {
+    'Pathrusim': 'Pathrusm',
+    'USA': 'USA',
+    'camelCased': 'camelCased',
+    'I': 'I',
+}
+
 optional_language_tests = {
     'pl': {
         'gżegżółka': 'grzegżółka',
@@ -545,9 +552,11 @@ if __name__ == '__main__':
     spell = Speller(lang='en')
     spelltest(spell, english1)
     spelltest(spell, sentences)
+    spelltest(spell, upper)
 
     # the rest doesn't have to pass 100%, they check the accuracy of correction
     # spelltest(spell, english2)
+    
 
     for lang, test in optional_language_tests.items():
         print('\n' + lang)
