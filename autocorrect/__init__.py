@@ -5,6 +5,7 @@ import os
 import re
 import sys
 import tarfile
+import textwrap
 from contextlib import closing
 
 from autocorrect.constants import word_regexes
@@ -41,11 +42,26 @@ class ProgressBar:
 def load_from_tar(lang, file_name='word_count.json'):
     archive_name = os.path.join(PATH, 'data/{}.tar.gz'.format(lang))
 
+    if lang not in word_regexes:
+        supported_langs = ', '.join(word_regexes.keys())
+        raise NotImplementedError(
+            textwrap.dedent("""
+            language '{}' not supported
+            supported languages: {}
+            you can easily add new languages by following instructions at
+            https://github.com/fsondej/autocorrect/tree/master#adding-new-languages
+            """.format(lang, supported_langs)))
+
     if not os.path.isfile(archive_name):
         print('dictionary for this language not found, downloading...')
         url = languages_url.format(lang)
         progress = ProgressBar()
-        urlretrieve(url, archive_name, progress.download_progress_hook)
+        try:
+            urlretrieve(url, archive_name, progress.download_progress_hook)
+        except Exception as ex:
+            raise ConnectionError(str(ex) + \
+                '\nFix your network connection, or manually download \n{}'
+                '\nand put it in \nPATH_TO_REPO/autocorrect/data/'.format(url))
 
     with closing(tarfile.open(archive_name, 'r:gz')) as tarf:
         with closing(tarf.extractfile(file_name)) as file:
@@ -53,7 +69,7 @@ def load_from_tar(lang, file_name='word_count.json'):
 
 
 class Speller:
-    def __init__(self, threshold=0, lang='en', nlp_data=None):
+    def __init__(self, lang='en', threshold=0, nlp_data=None):
         self.threshold = threshold
         self.nlp_data = load_from_tar(lang) if nlp_data is None else nlp_data
         self.lang = lang

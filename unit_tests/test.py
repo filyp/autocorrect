@@ -560,11 +560,11 @@ if __name__ == '__main__':
 
     for lang, test in optional_language_tests.items():
         print('\n' + lang)
-        spell = Speller(lang=lang)
+        spell = Speller(lang)
         spelltest(spell, test, verbose=1)
 
     print('\nbenchmarks:')
-    spell = Speller(lang='pl')
+    spell = Speller('pl')
     benchmark('english sentences', spell, sentences)
-    spell = Speller(lang='pl')
+    spell = Speller('pl')
     benchmark('polish words', spell, optional_language_tests['pl'])

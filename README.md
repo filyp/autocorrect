@@ -15,7 +15,7 @@ pip install autocorrect
 >>> spell("I'm not sleapy and tehre is no place I'm giong to.")
 "I'm not sleepy and there is no place I'm going to."
 
->>> spell = Speller(lang='pl')
+>>> spell = Speller('pl')
 >>> spell('ptaaki latatją kluczmm')                                         
 'ptaki latają kluczem'
 ```
@@ -60,5 +60,3 @@ https://github.com/fsondej/autocorrect
 - option to disable double typos for speed
 - it looks that loading spellers multiple times may be leaking memory
 - in double typos we check same words twice
-- clean repo: https://stackoverflow.com/questions/2116778/reduce-git-repository-size
-- maybe use LFS
