@@ -56,7 +56,8 @@ https://github.com/fsondej/autocorrect
 
 # Todo
 - some words are corrected to implausible versions (see english2 in unit_tests)
-- python2 doesn't support correction with polish special chars
 - option to disable double typos for speed
 - it looks that loading spellers multiple times may be leaking memory
 - in double typos we check same words twice
+- use English wikipedia
+- recount polish wikipedia

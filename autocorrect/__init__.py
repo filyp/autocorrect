@@ -14,6 +14,7 @@ from autocorrect.typos import Word
 if sys.version_info[0] == 3:
     from urllib.request import urlretrieve
 else:
+    print("WARNING: python2 doesn't support correction with special chars")
     from urllib import urlretrieve
 
 
