@@ -1,5 +1,5 @@
 # Autocorrect
-Spelling corrector in python. Currently supports English, Polish, Turkish, Russian and Ukrainian, but you can easily add new languages.
+Spelling corrector in python. Currently supports English, Polish, Turkish, Russian, Ukrainian and Spanish, but you can easily add new languages.
 
 Based on: https://github.com/phatpiglet/autocorrect
 
