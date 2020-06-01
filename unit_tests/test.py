@@ -544,6 +544,15 @@ optional_language_tests = {
         'сцени': 'сценн|сцеии',
         'названий': 'названйй',
         'культуролог': 'культуролг',
+    },
+    'es': {
+        'Acción': 'Accion',
+        'Comunicación': 'Comunicacion',
+        'Estructura': 'Extructura',
+        'Hambre': 'Hanbre',
+        'Abanderar': 'Habanderar|Avanderar|Havanderar',
+        'Fenómenos meteorológicos': 'Fenomenos meteorologicos',
+        'Yo para ser feliz quiero un camión': 'Yo praa ser feliz quiero nu cambión',
     }
 }
 
@@ -556,7 +565,7 @@ if __name__ == '__main__':
 
     # the rest doesn't have to pass 100%, they check the accuracy of correction
     # spelltest(spell, english2)
-    
+
 
     for lang, test in optional_language_tests.items():
         print('\n' + lang)
