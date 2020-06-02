@@ -546,13 +546,11 @@ optional_language_tests = {
         'культуролог': 'культуролг',
     },
     'es': {
-        'Acción': 'Accion',
-        'Comunicación': 'Comunicacion',
-        'Estructura': 'Extructura',
-        'Hambre': 'Hanbre',
-        'Abanderar': 'Habanderar|Avanderar|Havanderar',
+        'hola': 'hola',
+        'hambre': 'hanbre',
+        'rabia': 'ravia',
         'Fenómenos meteorológicos': 'Fenomenos meteorologicos',
-        'Yo para ser feliz quiero un camión': 'Yo praa ser feliz quiero nu cambión',
+        'vamos a comprobar qué tipo de compromiso tenemos que conseguir con este umbral': 'vamo a comprobar qué tpio de comppromiso tenemos que conzehuir con ehte unbral',
     }
 }
 
