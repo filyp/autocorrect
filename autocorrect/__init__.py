@@ -57,18 +57,19 @@ def load_from_tar(lang, file_name='word_count.json'):
         print('dictionary for this language not found, downloading...')
         possible_urls = [
             urls[lang], 
-            languages_url.format(lang)
+            # languages_url.format(lang)
         ]
-        ex = None
         for url in possible_urls:
             progress = ProgressBar()
             try:
                 urlretrieve(url, archive_name, progress.download_progress_hook)
+                error_message = None
                 break
             except Exception as ex:
                 print("couldn't download {}, trying next url...".format(url))
-        if ex is not None:
-            raise ConnectionError(str(ex) + \
+                error_message = str(ex)
+        if error_message is not None:
+            raise ConnectionError(error_message + \
                 '\nFix your network connection, or manually download \n{}'
                 '\nand put it in \nPATH_TO_REPO/autocorrect/data/'.format(url))
 
