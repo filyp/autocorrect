@@ -20,6 +20,14 @@ pip install autocorrect
 'ptaki latają kluczem'
 ```
 
+# Speed
+```python
+%timeit spell("I'm not sleapy and tehre is no place I'm giong to.")
+410 µs ± 6.84 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+%timeit spell("There is no comin to consiousnes without pain.")
+186 ms ± 1.59 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+```
+
 # Adding new languages
 First add special letters in autocorrect/constants.py.
 
@@ -36,19 +44,11 @@ After that:
 
 ```python
 >>> from autocorrect.word_count import count_words
->>> count_words('eswiki-latest-pages-articles.xml', 'ru')
+>>> count_words('eswiki-latest-pages-articles.xml', 'es')
 ```
 
 ```
 tar -zcvf autocorrect/data/es.tar.gz word_count.json
-```
-
-# Speed
-```python
-%timeit spell("I'm not sleapy and tehre is no place I'm giong to.")
-410 µs ± 6.84 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
-%timeit spell("There is no comin to consiousnes without pain.")
-186 ms ± 1.59 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
 ```
 
 # Contribute
@@ -57,7 +57,7 @@ https://github.com/fsondej/autocorrect
 # Todo
 - some words are corrected to implausible versions (see english2 in unit_tests)
 - option to disable double typos for speed
-- it looks that loading spellers multiple times may be leaking memory
+- it looks that loading spellers multiple times may be leaking memory, or maybe not
 - in double typos we check same words twice
 - use English wikipedia
 - recount polish wikipedia

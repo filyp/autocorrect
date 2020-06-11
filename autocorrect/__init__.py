@@ -8,7 +8,7 @@ import tarfile
 import textwrap
 from contextlib import closing
 
-from autocorrect.constants import word_regexes
+from autocorrect.constants import word_regexes, urls
 from autocorrect.typos import Word
 
 if sys.version_info[0] == 3:
@@ -55,11 +55,19 @@ def load_from_tar(lang, file_name='word_count.json'):
 
     if not os.path.isfile(archive_name):
         print('dictionary for this language not found, downloading...')
-        url = languages_url.format(lang)
-        progress = ProgressBar()
-        try:
-            urlretrieve(url, archive_name, progress.download_progress_hook)
-        except Exception as ex:
+        possible_urls = [
+            urls[lang], 
+            languages_url.format(lang)
+        ]
+        ex = None
+        for url in possible_urls:
+            progress = ProgressBar()
+            try:
+                urlretrieve(url, archive_name, progress.download_progress_hook)
+                break
+            except Exception as ex:
+                print("couldn't download {}, trying next url...".format(url))
+        if ex is not None:
             raise ConnectionError(str(ex) + \
                 '\nFix your network connection, or manually download \n{}'
                 '\nand put it in \nPATH_TO_REPO/autocorrect/data/'.format(url))
