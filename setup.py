@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(name='autocorrect',
-      version='1.2.1',
+      version='1.2.2',
       packages=['autocorrect'],
       package_data={'autocorrect': ['data/en.tar.gz']},
       description='Spelling Corrector',
