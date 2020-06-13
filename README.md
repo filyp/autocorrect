@@ -28,6 +28,14 @@ pip install autocorrect
 186 ms ± 1.59 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
 ```
 
+As you see, for some words correction can take ~200ms. If speed is important for your use case (e.g. chatbot) you may want to use option 'fast':
+```python
+spell = Speller(fast=True)
+%timeit spell("There is no comin to consiousnes without pain.")
+381 µs ± 2.18 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+```
+Now, the correction should always work in microseconds, but words with double typos (like 'consiousnes') won't be corrected.
+
 # Adding new languages
 First add special letters in autocorrect/constants.py.
 
@@ -65,9 +73,6 @@ If you do it, please make a pull request. Good luck!
 https://github.com/fsondej/autocorrect
 
 # Todo
-- some words are corrected to implausible versions (see english2 in unit_tests)
-- option to disable double typos for speed
-- it looks that loading spellers multiple times may be leaking memory, or maybe not
+- some English words are corrected to implausible versions (see english2 in unit_tests); use English wikipedia
 - in double typos we check same words twice
-- use English wikipedia
 - recount polish wikipedia

@@ -79,10 +79,11 @@ def load_from_tar(lang, file_name='word_count.json'):
 
 
 class Speller:
-    def __init__(self, lang='en', threshold=0, nlp_data=None):
+    def __init__(self, lang='en', threshold=0, nlp_data=None, fast=False):
+        self.lang = lang
         self.threshold = threshold
         self.nlp_data = load_from_tar(lang) if nlp_data is None else nlp_data
-        self.lang = lang
+        self.fast = fast
 
         if threshold > 0:
             print('Original number of words: {}'
@@ -101,10 +102,15 @@ class Speller:
         """most likely correction for everything up to a double typo"""
         def get_candidates(word):
             w = Word(word, self.lang)
-            candidates = (self.existing([word]) or
-                          self.existing(w.typos()) or
-                          self.existing(w.double_typos()) or
-                          [word])
+            if self.fast:
+                candidates = (self.existing([word]) or
+                              self.existing(w.typos()) or
+                              [word])
+            else:
+                candidates = (self.existing([word]) or
+                              self.existing(w.typos()) or
+                              self.existing(w.double_typos()) or
+                              [word])
             return [(self.nlp_data.get(c, 0), c) for c in candidates]
 
         candidates = get_candidates(word)

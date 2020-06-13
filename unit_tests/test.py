@@ -32,7 +32,8 @@ def benchmark(name, speller, tests, repetitions=20):
         spelltest(speller, tests, verbose=0)
         duration = time.time() - start
         current_min = min(duration, current_min)
-    print('{:<20} {:.3f}s'.format(name, current_min))
+    print('{:<24} {:.3f}s    '.format(name, current_min), end='')
+    spelltest(speller, tests, verbose=1)
 
 
 english1 = {'access': 'acess',
@@ -556,15 +557,17 @@ if __name__ == '__main__':
 
     # the rest doesn't have to pass 100%, they check the accuracy of correction
     # spelltest(spell, english2)
-    
 
+    print()
     for lang, test in optional_language_tests.items():
-        print('\n' + lang)
+        print(lang + '  ', end='')
         spell = Speller(lang)
         spelltest(spell, test, verbose=1)
 
     print('\nbenchmarks:')
-    spell = Speller('pl')
+    spell = Speller('en')
     benchmark('english sentences', spell, sentences)
+    spell = Speller('en', fast=True)
+    benchmark('english sentences fast', spell, sentences)
     spell = Speller('pl')
     benchmark('polish words', spell, optional_language_tests['pl'])
