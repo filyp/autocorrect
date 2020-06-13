@@ -51,6 +51,16 @@ After that:
 tar -zcvf autocorrect/data/es.tar.gz word_count.json
 ```
 
+For the correction to work well, you need to cut out rarely used words. You can do it by calling for example:
+
+```python
+>>> spell = Speller('es', threshold=4)
+```
+
+To use only words which appeared at least 4 times in wikipedia. You'll have to find the right threshold value empirically. It's best to make a unit test in unit_tests/test.py and see which threshold corrects the most words. After that, you can manually delete all those rare words from the file in es.tar.gz (it's already sorted so it should be easy).
+
+If you do it, please make a pull request. Good luck!
+
 # Contribute
 https://github.com/fsondej/autocorrect
 
