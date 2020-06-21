@@ -551,7 +551,18 @@ optional_language_tests = {
         'hambre': 'hanbre',
         'rabia': 'ravia',
         'Fenómenos meteorológicos': 'Fenomenos meteorologicos',
-        'vamos a comprobar qué tipo de compromiso tenemos que conseguir con este umbral': 'vamo a comprobar qué tpio de comppromiso tenemos que conzehuir con ehte unbral',
+        'vamos': 'vamo',
+        'tipo': 'tpio',
+        'compromiso': 'comppromiso',
+        'conseguir': 'conzeguir',
+        'este': 'ehte',
+        'umbral': 'unbral',
+        'Acción': 'Accion',
+        'Comunicación': 'Comunicacion',
+        'Estructura': 'Extructura',
+        'Abanderar': 'Habanderar|Avanderar|Havanderar',
+        'para': 'praa',
+        'camión': 'cambión',
     }
 }
 
