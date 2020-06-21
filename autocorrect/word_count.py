@@ -19,7 +19,7 @@ def count_words(src_filename, lang, out_filename='word_count.json'):
     counts = Counter(words)
     # make output file human readable
     counts_list = list(counts.items())
-    counts_list.sort(key=lambda i: counts[i[0]], reverse=True)
+    counts_list.sort(key=lambda i: i[1], reverse=True)
     counts_ord_dict = OrderedDict(counts_list)
     with open(out_filename, 'w') as outfile:
         json.dump(counts_ord_dict, outfile, indent=4)
