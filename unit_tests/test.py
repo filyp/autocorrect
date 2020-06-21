@@ -545,6 +545,24 @@ optional_language_tests = {
         'сцени': 'сценн|сцеии',
         'названий': 'названйй',
         'культуролог': 'культуролг',
+    },
+    'es': {
+        'hola': 'hola',
+        'hambre': 'hanbre',
+        'rabia': 'ravia',
+        'Fenómenos meteorológicos': 'Fenomenos meteorologicos',
+        'vamos': 'vamo',
+        'tipo': 'tpio',
+        'compromiso': 'comppromiso',
+        'conseguir': 'conzeguir',
+        'este': 'ehte',
+        'umbral': 'unbral',
+        'Acción': 'Accion',
+        'Comunicación': 'Comunicacion',
+        'Estructura': 'Extructura',
+        'Abanderar': 'Habanderar|Avanderar|Havanderar',
+        'para': 'praa',
+        'camión': 'cambión',
     }
 }
 

@@ -6,6 +6,7 @@ word_regexes = {
     'ru': r'[АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя]+',
     'uk': r'[АаБбВвГгҐґДдЕеЄєЖжЗзИиІіЇїЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЬЮюЯя]+',
     'tr': r'[a-zA-ZçÇğĞüÜöÖşŞıİ]+',
+    'es': r'[A-Za-zÁáÉéÍíÓóÚúÜüÑñ]+',
 }
 
 alphabets = {
@@ -14,6 +15,7 @@ alphabets = {
     'ru': 'шиюынжсяплзухтвкйеобмцьёгдщэарчфъ',
     'uk': 'фагксщроємшплуьцнжхїйювязтибґідеч',
     'tr': 'abcçdefgğhıijklmnoöprsştuüvyzqwxÇĞİÜÖ',
+    'es': 'abcdefghijklmnopqrstuvwxyzáéíóúüñ',
 }
 
 urls = {
@@ -22,4 +24,5 @@ urls = {
     'ru': 'https://drive.google.com/uc?export=download&id=1vvOako2MwtexEHX24Jx5CjjN-1yEXOrf',
     'uk': 'https://drive.google.com/uc?export=download&id=1nG_DG6aWU1PUA_DPSfrvh92puTLr8-aA',
     'tr': 'https://drive.google.com/uc?export=download&id=1ZGQEhLTteTQprRpnKrHTFWeV2RxYny21',
+    'es': 'https://drive.google.com/uc?export=download&id=19VQuOE12sb0p10SBKWRbSdnUvk0eeFPg',
 }
