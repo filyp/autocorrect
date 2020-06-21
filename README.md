@@ -40,32 +40,32 @@ Now, the correction should always work in microseconds, but words with double ty
 First add special letters in autocorrect/constants.py.
 
 Now, you need a bunch of text. Easiest way is to download wikipedia.
-For example for Spanish go to:
-https://dumps.wikimedia.org/eswiki/latest/
-and download eswiki-latest-pages-articles.xml.bz2
+For example for Hindi go to:
+https://dumps.wikimedia.org/hiwiki/latest/
+and download hiwiki-latest-pages-articles.xml.bz2
 
 ```
-bzip2 -d eswiki-latest-pages-articles.xml.bz2
+bzip2 -d hiwiki-latest-pages-articles.xml.bz2
 ```
 
 After that:
 
 ```python
 >>> from autocorrect.word_count import count_words
->>> count_words('eswiki-latest-pages-articles.xml', 'es')
+>>> count_words('hiwiki-latest-pages-articles.xml', 'hi')
 ```
 
 ```
-tar -zcvf autocorrect/data/es.tar.gz word_count.json
+tar -zcvf autocorrect/data/hi.tar.gz word_count.json
 ```
 
 For the correction to work well, you need to cut out rarely used words. You can do it by calling for example:
 
 ```python
->>> spell = Speller('es', threshold=4)
+>>> spell = Speller('hi', threshold=4)
 ```
 
-To use only words which appeared at least 4 times in wikipedia. You'll have to find the right threshold value empirically. It's best to make a unit test in unit_tests/test.py and see which threshold corrects the most words. After that, you can manually delete all those rare words from the file in es.tar.gz (it's already sorted so it should be easy).
+To use only words which appeared at least 4 times in wikipedia. You'll have to find the right threshold value empirically. It's best to make a unit test in unit_tests/test.py and see which threshold corrects the most words. After that, you can manually delete all those rare words from the file in hi.tar.gz (it's already sorted so it should be easy).
 
 If you do it, please make a pull request. Good luck!
 
