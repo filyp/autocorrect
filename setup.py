@@ -17,6 +17,7 @@ setup(name='autocorrect',
                    'Natural Language :: Russian',
                    'Natural Language :: Ukrainian',
                    'Natural Language :: Turkish',
+                   'Natural Language :: Spanish',
                    'Programming Language :: Python',
                    'Programming Language :: Python :: 3',),
-      keywords='autocorrect spelling corrector')
+      keywords='autocorrect spelling corrector nlp multilanguage spellcheck')
