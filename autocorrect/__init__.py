@@ -16,7 +16,7 @@ languages_url = "https://github.com/fsondej/autocorrect/raw/master/\
 optional_languages/{}.tar.gz"
 
 
-# credit: https://stackoverflow.com/questions/43370284/why-function-works-properly-without-specifying-parameters
+# credit: https://stackoverflow.com/questions/43370284
 class ProgressBar:
     def __init__(self):
         self.old_percent = 0
@@ -49,7 +49,7 @@ def load_from_tar(lang, file_name='word_count.json'):
     if not os.path.isfile(archive_name):
         print('dictionary for this language not found, downloading...')
         possible_urls = [
-            urls[lang], 
+            urls[lang],
             # languages_url.format(lang)
         ]
         for url in possible_urls:
@@ -62,7 +62,8 @@ def load_from_tar(lang, file_name='word_count.json'):
                 print(f"couldn't download {url}, trying next url...")
                 error_message = str(ex)
         if error_message is not None:
-            raise ConnectionError(error_message + \
+            raise ConnectionError(
+                error_message +
                 '\nFix your network connection, or manually download \n{}'
                 '\nand put it in \nPATH_TO_REPO/autocorrect/data/'.format(url))
 
@@ -87,7 +88,7 @@ class Speller:
     def existing(self, words):
         """{'the', 'teh'} => {'the'}"""
         return {word for word in words
-                   if word in self.nlp_data}
+                if word in self.nlp_data}
 
     def autocorrect_word(self, word):
         """most likely correction for everything up to a double typo"""
