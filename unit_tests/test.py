@@ -545,6 +545,13 @@ optional_language_tests = {
         'сцени': 'сценн|сцеии',
         'названий': 'названйй',
         'культуролог': 'культуролг',
+    },
+    'es': {
+        'hola': 'hola',
+        'hambre': 'hanbre',
+        'rabia': 'ravia',
+        'Fenómenos meteorológicos': 'Fenomenos meteorologicos',
+        'vamos a comprobar qué tipo de compromiso tenemos que conseguir con este umbral': 'vamo a comprobar qué tpio de comppromiso tenemos que conzehuir con ehte unbral',
     }
 }
 
