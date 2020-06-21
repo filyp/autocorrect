@@ -568,7 +568,8 @@ optional_language_tests = {
 
 if __name__ == '__main__':
     # those two should pass 100%, they check if nothing got broken
-    spell = Speller(lang='en')
+    print('must pass:')
+    spell = Speller('en')
     spelltest(spell, english1)
     spelltest(spell, sentences)
     spelltest(spell, upper)
@@ -576,7 +577,7 @@ if __name__ == '__main__':
     # the rest doesn't have to pass 100%, they check the accuracy of correction
     # spelltest(spell, english2)
 
-    print()
+    print('\nquality:')
     for lang, test in optional_language_tests.items():
         print(lang + '  ', end='')
         spell = Speller(lang)
