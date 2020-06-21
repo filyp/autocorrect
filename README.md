@@ -16,7 +16,7 @@ pip install autocorrect
 "I'm not sleepy and there is no place I'm going to."
 
 >>> spell = Speller('pl')
->>> spell('ptaaki latatją kluczmm')                                         
+>>> spell('ptaaki latatją kluczmm')
 'ptaki latają kluczem'
 ```
 
@@ -45,7 +45,7 @@ https://dumps.wikimedia.org/eswiki/latest/
 and download eswiki-latest-pages-articles.xml.bz2
 
 ```
-tar -jxvf eswiki-latest-pages-articles.xml.bz2
+bzip2 -d eswiki-latest-pages-articles.xml.bz2
 ```
 
 After that:
