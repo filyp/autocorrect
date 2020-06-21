@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 word_regexes = {
     'en': r'[A-Za-z]+',
     'pl': r'[A-Za-zęĘóÓąĄśŚłŁżŻźŹćĆńŃ]+',

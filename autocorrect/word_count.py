@@ -11,8 +11,7 @@ def get_words(filename, lang):
     with open(filename) as file:
         for line in file:
             line = re.sub(capitalized_regex, '', line)
-            for word in re.findall(word_regex, line):
-                yield word
+            yield from re.findall(word_regex, line)
 
 
 def count_words(src_filename, lang, out_filename='word_count.json'):

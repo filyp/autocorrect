@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import os
 import sys
 import time
@@ -22,7 +20,7 @@ def spelltest(speller, tests, verbose=2):
                     print('spell({}) => {}; should be {}'.format(
                         incorrect_spelling, w, target))
     if verbose >= 1:
-        print('bad: {}/{}'.format(bad, n))
+        print(f'bad: {bad}/{n}')
 
 
 def benchmark(name, speller, tests, repetitions=20):
@@ -32,7 +30,7 @@ def benchmark(name, speller, tests, repetitions=20):
         spelltest(speller, tests, verbose=0)
         duration = time.time() - start
         current_min = min(duration, current_min)
-    print('{:<24} {:.3f}s    '.format(name, current_min), end='')
+    print(f'{name:<24} {current_min:.3f}s    ', end='')
     spelltest(speller, tests, verbose=1)
 
 
