@@ -31,4 +31,4 @@ jobs:
         --per-file-ignores='autocorrect/constants.py:E501 setup.py:E501'
     - name: Test with pytest
       run: |
-        pytest
+        pytest -s

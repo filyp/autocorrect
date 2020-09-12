@@ -3,109 +3,83 @@ import time
 from autocorrect import Speller
 
 
-def spelltest(speller, tests, verbose=2):
-    n, bad = 0, 0
-    for target, incorrect_spellings in tests.items():
-        for incorrect_spelling in incorrect_spellings.split('|'):
-            n += 1
-            w = speller(incorrect_spelling)
-            if w != target:
-                bad += 1
-                if verbose >= 2:
-                    print('spell({}) => {}; should be {}'.format(
-                        incorrect_spelling, w, target))
-    if verbose >= 1:
-        print(f'bad: {bad}/{n}')
-
-
-def benchmark(name, speller, tests, repetitions=20):
-    current_min = float('inf')
-    for _ in range(repetitions):
-        start = time.time()
-        spelltest(speller, tests, verbose=0)
-        duration = time.time() - start
-        current_min = min(duration, current_min)
-    print(f'{name:<24} {current_min:.3f}s    ', end='')
-    spelltest(speller, tests, verbose=1)
-
-
-english1 = {'access': 'acess',
-            'accommodation': 'accomodation|acommodation|acomodation',
-            'addressable': 'addresable',
-            'arranged': 'aranged|arrainged',
-            'articles': 'articals',
-            'aunt': 'annt|anut',
-            'basically': 'basicaly',
-            'beginning': 'begining',
-            'benefit': 'benifit',
-            'benefits': 'benifits',
-            'between': 'beetween',
-            'biscuits': 'biscits|biscuts|bisquits|buiscits|buiscuts',
-            'built': 'biult',
-            'career': 'carrer',
-            'certain': 'cirtain',
-            'challenges': 'chalenges|chalenges',
-            'chapter': 'chaper|chaphter|chaptur',
-            'clerical': 'clearical',
-            'committee': 'comittee',
-            'completely': 'completly',
-            'consider': 'concider',
-            'considerable': 'conciderable',
-            'decide': 'descide',
-            'decided': 'descided',
-            'definitely': 'definately|difinately',
-            'definition': 'defenition',
-            'definitions': 'defenitions',
-            'description': 'discription',
-            'diagrammatically': 'diagrammaticaally',
-            'different': 'diffrent',
-            'driven': 'dirven',
-            'establishing': 'astablishing|establising',
-            'extended': 'extented',
-            'extremely': 'extreamly',
-            'families': 'familes',
-            'february': 'febuary',
-            'gallery': 'galery|gallary|gallerry|gallrey',
-            'hierarchy': 'hierchy',
-            'inconvenient': 'inconvienient|inconvient|inconvinient',
-            'independent': 'independant|independant',
-            'initial': 'intial',
-            'level': 'leval',
-            'levels': 'levals',
-            'literature': 'litriture',
-            'magnificent': 'magnificnet|magificent|magnifcent|magnifecent',
-            'management': 'managment',
-            'monitoring': 'monitering',
-            'necessary': 'neccesary|necesary|neccesary|necassary|necassery',
-            'parallel': 'paralel|paralell|parrallel|parralell|parrallell',
-            'particular': 'particulaur',
-            'perhaps': 'perhapse',
-            'position': 'possition',
-            'possible': 'possable',
-            'pronunciation': 'pronounciation',
-            'questionnaire': 'questionaire',
-            'receive': 'recieve',
-            'refreshment': 'reafreshment|refreshmant|refresment|refressmunt',
-            'scarcely': 'scarcly|scarecly|scarely|scarsely',
-            'scissors': 'scisors|sissors',
-            'separate': 'seperate',
-            'singular': 'singulaur',
-            'someone': 'somone',
-            'southern': 'southen',
-            'special': 'speaical|specail|specal|speical',
-            'transferred': 'transfred',
-            'transportability': 'transportibility',
-            'triangular': 'triangulaur',
-            'unexpected': 'unexpcted|unexpeted|unexspected',
-            'unfortunately': 'unfortunatly',
-            'unique': 'uneque',
-            'useful': 'usefull',
-            'valuable': 'valubale|valuble',
-            'variable': 'varable',
-            'variant': 'vairiant',
-            'various': 'vairious',
-            'visitors': 'vistors',
-            'voting': 'voteing'}
+english = {'access': 'acess',
+           'accommodation': 'accomodation|acommodation|acomodation',
+           'addressable': 'addresable',
+           'arranged': 'aranged|arrainged',
+           'articles': 'articals',
+           'aunt': 'annt|anut',
+           'basically': 'basicaly',
+           'beginning': 'begining',
+           'benefit': 'benifit',
+           'benefits': 'benifits',
+           'between': 'beetween',
+           'biscuits': 'biscits|biscuts|bisquits|buiscits|buiscuts',
+           'built': 'biult',
+           'career': 'carrer',
+           'certain': 'cirtain',
+           'challenges': 'chalenges|chalenges',
+           'chapter': 'chaper|chaphter|chaptur',
+           'clerical': 'clearical',
+           'committee': 'comittee',
+           'completely': 'completly',
+           'consider': 'concider',
+           'considerable': 'conciderable',
+           'decide': 'descide',
+           'decided': 'descided',
+           'definitely': 'definately|difinately',
+           'definition': 'defenition',
+           'definitions': 'defenitions',
+           'description': 'discription',
+           'diagrammatically': 'diagrammaticaally',
+           'different': 'diffrent',
+           'driven': 'dirven',
+           'establishing': 'astablishing|establising',
+           'extended': 'extented',
+           'extremely': 'extreamly',
+           'families': 'familes',
+           'february': 'febuary',
+           'gallery': 'galery|gallary|gallerry|gallrey',
+           'hierarchy': 'hierchy',
+           'inconvenient': 'inconvienient|inconvient|inconvinient',
+           'independent': 'independant|independant',
+           'initial': 'intial',
+           'level': 'leval',
+           'levels': 'levals',
+           'literature': 'litriture',
+           'magnificent': 'magnificnet|magificent|magnifcent|magnifecent',
+           'management': 'managment',
+           'monitoring': 'monitering',
+           'necessary': 'neccesary|necesary|neccesary|necassary|necassery',
+           'parallel': 'paralel|paralell|parrallel|parralell|parrallell',
+           'particular': 'particulaur',
+           'perhaps': 'perhapse',
+           'position': 'possition',
+           'possible': 'possable',
+           'pronunciation': 'pronounciation',
+           'questionnaire': 'questionaire',
+           'receive': 'recieve',
+           'refreshment': 'reafreshment|refreshmant|refresment|refressmunt',
+           'scarcely': 'scarcly|scarecly|scarely|scarsely',
+           'scissors': 'scisors|sissors',
+           'separate': 'seperate',
+           'singular': 'singulaur',
+           'someone': 'somone',
+           'southern': 'southen',
+           'special': 'speaical|specail|specal|speical',
+           'transferred': 'transfred',
+           'transportability': 'transportibility',
+           'triangular': 'triangulaur',
+           'unexpected': 'unexpcted|unexpeted|unexspected',
+           'unfortunately': 'unfortunatly',
+           'unique': 'uneque',
+           'useful': 'usefull',
+           'valuable': 'valubale|valuble',
+           'variable': 'varable',
+           'variant': 'vairiant',
+           'various': 'vairious',
+           'visitors': 'vistors',
+           'voting': 'voteing'}
 
 
 sentences = {
@@ -561,15 +535,51 @@ optional_language_tests = {
     }
 }
 
-if __name__ == '__main__':
-    # those two should pass 100%, they check if nothing got broken
-    print('must pass:')
-    spell = Speller('en')
-    spelltest(spell, english1)
-    spelltest(spell, sentences)
-    spelltest(spell, upper)
 
-    # the rest doesn't have to pass 100%, they check the accuracy of correction
+def spelltest(speller, tests, verbose=2):
+    n, bad = 0, 0
+    for target, incorrect_spellings in tests.items():
+        for incorrect_spelling in incorrect_spellings.split('|'):
+            n += 1
+            w = speller(incorrect_spelling)
+            if w != target:
+                bad += 1
+                if verbose >= 2:
+                    print('spell({}) => {}; should be {}'.format(
+                        incorrect_spelling, w, target))
+    if verbose >= 1:
+        print(f'bad: {bad}/{n}')
+    return bad
+
+
+def benchmark(name, speller, tests, repetitions=20):
+    current_min = float('inf')
+    for _ in range(repetitions):
+        start = time.time()
+        spelltest(speller, tests, verbose=0)
+        duration = time.time() - start
+        current_min = min(duration, current_min)
+    print(f'{name:<24} {current_min:.3f}s    ', end='')
+    spelltest(speller, tests, verbose=1)
+
+
+spell = Speller('en')
+
+
+def test_english_words():
+    assert spelltest(spell, english) == 0
+
+
+def test_sentences():
+    assert spelltest(spell, sentences) == 0
+
+
+def test_uppercase():
+    assert spelltest(spell, upper) == 0
+
+
+if __name__ == '__main__':
+    # this doesn't have to pass 100%, they check the accuracy of correction
     print('\nquality:')
     for lang, test in optional_language_tests.items():
         print(lang + '  ', end='')
