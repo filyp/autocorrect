@@ -1,4 +1,6 @@
 # Autocorrect
+![build](https://github.com/fsondej/autocorrect/workflows/build/badge.svg)
+
 Spelling corrector in python. Currently supports English, Polish, Turkish, Russian, Ukrainian and Spanish, but you can easily add new languages.
 
 Based on: https://github.com/phatpiglet/autocorrect
