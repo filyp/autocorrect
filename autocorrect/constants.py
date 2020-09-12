@@ -34,5 +34,5 @@ urls = {
     'uk': 'https://siasky.net/AADdpauxvMwjieU3n5qaMbjAeCYR9T-vK6L1OEXRTOgr6g',
     'tr': 'https://siasky.net/AABWRhJ-7NVoo2vaTgSs6HNhwGmFgCgYzg0q_0d-eqgCeA',
     'es': 'https://siasky.net/_ArsYbh-vpFWosvzEuQQZnPrOt2XggjDQfkvDwTFu5MQoA',
-    'cs': 'https://dl.dropboxusercontent.com/s/369wplqb0w2ax21/cs.tar.gz?dl=0',
+    'cs': 'https://siasky.net/AABXA6pYvuNDiuwnci8tjpJ0SIpXFtV9bb8DnkszJp4PfQ',
 }
