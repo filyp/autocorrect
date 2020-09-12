@@ -15,7 +15,7 @@ alphabets = {
     'uk': 'фагксщроємшплуьцнжхїйювязтибґідеч',
     'tr': 'abcçdefgğhıijklmnoöprsştuüvyzqwxÇĞİÜÖ',
     'es': 'abcdefghijklmnopqrstuvwxyzáéíóúüñ',
-    'cs': 'aábcčdďeéěfgh(ch)iíjklmnňoópqrřsštťuúůvwxyýzž.',
+    'cs': 'aábcčdďeéěfgh(ch)iíjklmnňoópqrřsštťuúůvwxyýzž',
 }
 
 urls = {
