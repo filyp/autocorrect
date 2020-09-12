@@ -578,6 +578,10 @@ def test_uppercase():
     assert spelltest(spell, upper) == 0
 
 
+def test_empty():
+    spell.autocorrect_word('')
+
+
 if __name__ == '__main__':
     # this doesn't have to pass 100%, they check the accuracy of correction
     print('\nquality:')

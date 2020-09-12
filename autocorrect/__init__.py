@@ -92,6 +92,9 @@ class Speller:
 
     def autocorrect_word(self, word):
         """most likely correction for everything up to a double typo"""
+        if word == '':
+            return ''
+
         def get_candidates(word):
             w = Word(word, self.lang)
             if self.fast:
