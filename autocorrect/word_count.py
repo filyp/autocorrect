@@ -5,17 +5,17 @@ from collections import Counter, OrderedDict
 from autocorrect.constants import word_regexes
 
 
-def get_words(filename, lang):
+def get_words(filename, lang, encoding):
     word_regex = word_regexes[lang]
     capitalized_regex = r'(\.|^|<|"|\'|\(|\[|\{)\s*' + word_regexes[lang]
-    with open(filename) as file:
+    with open(filename, encoding=encoding) as file:
         for line in file:
             line = re.sub(capitalized_regex, '', line)
             yield from re.findall(word_regex, line)
 
 
-def count_words(src_filename, lang, out_filename='word_count.json'):
-    words = get_words(src_filename, lang)
+def count_words(src_filename, lang, encoding=None, out_filename='word_count.json'):
+    words = get_words(src_filename, lang, encoding)
     counts = Counter(words)
     # make output file human readable
     counts_list = list(counts.items())
