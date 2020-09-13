@@ -721,7 +721,6 @@ optional_language_tests = {
     },
 }
 
-
 def spelltest(speller, tests, verbose=2):
     n, bad = 0, 0
     for target, incorrect_spellings in tests.items():
