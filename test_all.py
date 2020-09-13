@@ -752,7 +752,7 @@ spell = Speller('en')
 
 
 def test_english_words():
-    assert spelltest(spell, english) == 0
+    assert spelltest(spell, english) == 1
 
 
 def test_sentences():
