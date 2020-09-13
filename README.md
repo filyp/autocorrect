@@ -1,7 +1,7 @@
 # Autocorrect
 ![build](https://github.com/fsondej/autocorrect/workflows/build/badge.svg)
 
-Spelling corrector in python. Currently supports English, Polish, Turkish, Russian, Ukrainian and Spanish, but you can easily add new languages.
+Spelling corrector in python. Currently supports English, Polish, Turkish, Russian, Ukrainian, Czech and Spanish, but you can easily add new languages.
 
 Based on: https://github.com/phatpiglet/autocorrect
 
@@ -67,7 +67,7 @@ For the correction to work well, you need to cut out rarely used words. You can 
 >>> spell = Speller('hi', threshold=4)
 ```
 
-To use only words which appeared at least 4 times in wikipedia. You'll have to find the right threshold value empirically. It's best to make a unit test in unit_tests/test.py and see which threshold corrects the most words. After that, you can manually delete all those rare words from the file in hi.tar.gz (it's already sorted so it should be easy).
+To use only words which appeared at least 4 times in wikipedia. You'll have to find the right threshold value empirically. It's best to make a unit test in test_all.py and see which threshold corrects the most words. After that, you can manually delete all those rare words from the file in hi.tar.gz (it's already sorted so it should be easy).
 
 If you do it, please make a pull request. Good luck!
 
