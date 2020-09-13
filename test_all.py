@@ -81,7 +81,6 @@ english = {'access': 'acess',
            'visitors': 'vistors',
            'voting': 'voteing'}
 
-
 sentences = {
     'There is no coming to consciousness without pain.':
     'There is no comin to consiousnes without pain.',
@@ -96,6 +95,21 @@ upper = {
     'USA': 'USA',
     'camelCased': 'camelCased',
     'I': 'I',
+}
+
+spanish_words_all_correct = {
+    'hola': 'hola',
+    'hambre': 'hanbre',
+    'rabia': 'ravia',
+    'Fenómenos meteorológicos': 'Fenomenos meteorologicos',
+    'vamos': 'vamo',
+    'tipo': 'tpio',
+    'compromiso': 'comppromiso',
+    'conseguir': 'conzeguir',
+    'este': 'ehte',
+    'umbral': 'unbral',
+    'Estructura': 'Extructura',
+    'para': 'praa',
 }
 
 optional_language_tests = {
@@ -707,13 +721,6 @@ optional_language_tests = {
     },
 }
 
-czech_benchmark = {
-    'koncentracích': 'konceitracích',
-    'nežádoucí': 'žežádoucé',
-    'obejít': 'ozejžt',
-}
-
-
 def spelltest(speller, tests, verbose=2):
     n, bad = 0, 0
     for target, incorrect_spellings in tests.items():
@@ -760,6 +767,11 @@ def test_empty():
     spell.autocorrect_word('')
 
 
+def test_spanish():
+    spell_es = Speller('es')
+    assert spelltest(spell_es, spanish_words_all_correct) == 0
+
+
 if __name__ == '__main__':
     # this doesn't have to pass 100%, they check the accuracy of correction
     print('\nquality:')
@@ -775,5 +787,3 @@ if __name__ == '__main__':
     benchmark('english sentences fast', spell, sentences)
     spell = Speller('pl')
     benchmark('polish words', spell, optional_language_tests['pl'])
-    spell = Speller('cs')
-    benchmark('czech words', spell, czech_benchmark)
