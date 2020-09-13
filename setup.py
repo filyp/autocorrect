@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(name='autocorrect',
-      version='2.0.1',
+      version='2.1.0',
       python_requires='>=3.6',
       packages=['autocorrect'],
       package_data={'autocorrect': ['data/en.tar.gz']},
@@ -19,6 +19,7 @@ setup(name='autocorrect',
             'Natural Language :: Ukrainian',
             'Natural Language :: Turkish',
             'Natural Language :: Spanish',
+            'Natural Language :: Czech',
             'Programming Language :: Python',
             'Programming Language :: Python :: 3'),
       keywords='autocorrect spelling corrector nlp multilanguage spellcheck')
