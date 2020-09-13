@@ -5,6 +5,7 @@ word_regexes = {
     'uk': r'[АаБбВвГгҐґДдЕеЄєЖжЗзИиІіЇїЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЬЮюЯя]+',
     'tr': r'[a-zA-ZçÇğĞüÜöÖşŞıİ]+',
     'es': r'[A-Za-zÁáÉéÍíÓóÚúÜüÑñ]+',
+    'cs': r'[AÁBCČDĎEÉĚFGH(Ch)IÍJKLMNŇOÓPQRŘSŠTŤUÚŮVWXYÝZŽaábcčdďeéěfgh(ch)iíjklmnňoópqrřsštťuúůvwxyýzž]+',
 }
 
 alphabets = {
@@ -14,6 +15,7 @@ alphabets = {
     'uk': 'фагксщроємшплуьцнжхїйювязтибґідеч',
     'tr': 'abcçdefgğhıijklmnoöprsştuüvyzqwxÇĞİÜÖ',
     'es': 'abcdefghijklmnopqrstuvwxyzáéíóúüñ',
+    'cs': 'aábcčdďeéěfgh(ch)iíjklmnňoópqrřsštťuúůvwxyýzž',
 }
 
 # urls = {
@@ -32,4 +34,5 @@ urls = {
     'uk': 'https://siasky.net/AADdpauxvMwjieU3n5qaMbjAeCYR9T-vK6L1OEXRTOgr6g',
     'tr': 'https://siasky.net/AABWRhJ-7NVoo2vaTgSs6HNhwGmFgCgYzg0q_0d-eqgCeA',
     'es': 'https://siasky.net/_ArsYbh-vpFWosvzEuQQZnPrOt2XggjDQfkvDwTFu5MQoA',
+    'cs': 'https://siasky.net/AABXA6pYvuNDiuwnci8tjpJ0SIpXFtV9bb8DnkszJp4PfQ',
 }
