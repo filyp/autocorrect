@@ -26,9 +26,8 @@ jobs:
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with flake8
-      run: >
-        flake8 . --count --show-source --statistics --max-complexity=10
-        --per-file-ignores='autocorrect/constants.py:E501 setup.py:E501'
+      run: |
+        flake8
     - name: Test with pytest
       run: |
         pytest -s

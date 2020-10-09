@@ -1,0 +1,9 @@
+[flake8]
+count = True
+show-source = True
+statistics = True
+max-complexity = 10
+max-line-length = 80
+per-file-ignores =
+    autocorrect/constants.py: E501
+    setup.py: E501
