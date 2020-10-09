@@ -25,16 +25,16 @@ pip install autocorrect
 # Speed
 ```python
 %timeit spell("I'm not sleapy and tehre is no place I'm giong to.")
-410 µs ± 6.84 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+373 µs ± 2.09 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 %timeit spell("There is no comin to consiousnes without pain.")
-186 ms ± 1.59 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+150 ms ± 2.02 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 ```
 
 As you see, for some words correction can take ~200ms. If speed is important for your use case (e.g. chatbot) you may want to use option 'fast':
 ```python
 spell = Speller(fast=True)
 %timeit spell("There is no comin to consiousnes without pain.")
-381 µs ± 2.18 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+344 µs ± 2.23 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 ```
 Now, the correction should always work in microseconds, but words with double typos (like 'consiousnes') won't be corrected.
 
@@ -71,6 +71,3 @@ If you do it, please make a pull request. Good luck!
 
 # Contribute
 https://github.com/fsondej/autocorrect
-
-# Todo
-all done ^^
