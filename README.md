@@ -73,4 +73,4 @@ If you do it, please make a pull request. Good luck!
 https://github.com/fsondej/autocorrect
 
 # Todo
-- in double typos we check same words twice
+all done ^^
