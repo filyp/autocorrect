@@ -12,8 +12,6 @@ from autocorrect.typos import Word
 
 
 PATH = os.path.abspath(os.path.dirname(__file__))
-languages_url = "https://github.com/fsondej/autocorrect/raw/master/\
-optional_languages/{}.tar.gz"
 
 
 # credit: https://stackoverflow.com/questions/43370284
@@ -48,11 +46,7 @@ def load_from_tar(lang, file_name='word_count.json'):
 
     if not os.path.isfile(archive_name):
         print('dictionary for this language not found, downloading...')
-        possible_urls = [
-            urls[lang],
-            # languages_url.format(lang)
-        ]
-        for url in possible_urls:
+        for url in urls[lang]:
             progress = ProgressBar()
             try:
                 urlretrieve(url, archive_name, progress.download_progress_hook)

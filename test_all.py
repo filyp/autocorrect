@@ -1,7 +1,8 @@
+#!/usr/bin/python3
+import sys
 import time
 
 from autocorrect import Speller
-
 
 english = {'access': 'acess',
            'accommodation': 'accomodation|acommodation|acomodation',
@@ -774,17 +775,30 @@ def test_spanish():
 
 
 if __name__ == '__main__':
-    # this doesn't have to pass 100%, they check the accuracy of correction
-    print('\nquality:')
-    for lang, test in optional_language_tests.items():
-        print(lang + '  ', end='')
-        spell = Speller(lang)
-        spelltest(spell, test, verbose=1)
+    command = sys.argv[1]
 
-    print('\nbenchmarks:')
-    spell = Speller('en')
-    benchmark('english sentences', spell, sentences)
-    spell = Speller('en', fast=True)
-    benchmark('english sentences fast', spell, sentences)
-    spell = Speller('pl')
-    benchmark('polish words', spell, optional_language_tests['pl'])
+    if command == 'quality':
+        # this doesn't have to pass 100%, they check the accuracy of correction
+        print('\nquality:')
+        for lang, test in optional_language_tests.items():
+            print(lang + '  ', end='')
+            spell = Speller(lang)
+            spelltest(spell, test, verbose=1)
+    elif command == 'benchmark':
+        print('\nbenchmarks:')
+        spell = Speller('en')
+        benchmark('english sentences', spell, sentences)
+        spell = Speller('en', fast=True)
+        benchmark('english sentences fast', spell, sentences)
+        spell = Speller('pl')
+        benchmark('polish words', spell, optional_language_tests['pl'])
+    elif command == 'find_threshold':
+        lang = sys.argv[2]
+        test = optional_language_tests[lang]
+        for threshold in [0,1,2,4]:
+            spell = Speller(lang, threshold=threshold)
+            bad = spelltest(spell, test, verbose=0)
+            print(f'threshold: {threshold}, bad: {bad}')
+    else:
+        print('bad option, use:')
+        print('./test_all.py [quality | benchmark | find_threshold [lang]]')
