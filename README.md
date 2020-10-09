@@ -61,13 +61,11 @@ After that:
 tar -zcvf autocorrect/data/hi.tar.gz word_count.json
 ```
 
-For the correction to work well, you need to cut out rarely used words. You can do it by calling for example:
-
-```python
->>> spell = Speller('hi', threshold=4)
+For the correction to work well, you need to cut out rarely used words. First, in test_all.py, write test words for your language, and add them to optional_language_tests the same way as it's done for other languages. It's good to have at least 30 words. Now run:
 ```
-
-To use only words which appeared at least 4 times in wikipedia. You'll have to find the right threshold value empirically. It's best to make a unit test in test_all.py and see which threshold corrects the most words. After that, you can manually delete all those rare words from the file in hi.tar.gz (it's already sorted so it should be easy).
+python ./test_all.py find_threshold hi
+```
+ and see which threshold value has the least badly corrected words. After that, manually delete all the words with less occurences than the threshold value you found, from the file in hi.tar.gz (it's already sorted so it should be easy).
 
 If you do it, please make a pull request. Good luck!
 
@@ -75,6 +73,4 @@ If you do it, please make a pull request. Good luck!
 https://github.com/fsondej/autocorrect
 
 # Todo
-- some English words are corrected to implausible versions (see english2 in unit_tests); use English wikipedia
 - in double typos we check same words twice
-- recount polish wikipedia
