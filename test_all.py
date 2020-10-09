@@ -6,10 +6,7 @@ from autocorrect import Speller
 
 english = {'access': 'acess',
            'accommodation': 'accomodation|acommodation|acomodation',
-           'addressable': 'addresable',
            'arranged': 'aranged|arrainged',
-           'articles': 'articals',
-           'aunt': 'annt|anut',
            'basically': 'basicaly',
            'beginning': 'begining',
            'benefit': 'benifit',
@@ -28,11 +25,9 @@ english = {'access': 'acess',
            'considerable': 'conciderable',
            'decide': 'descide',
            'decided': 'descided',
-           'definitely': 'definately|difinately',
            'definition': 'defenition',
            'definitions': 'defenitions',
            'description': 'discription',
-           'diagrammatically': 'diagrammaticaally',
            'different': 'diffrent',
            'driven': 'dirven',
            'establishing': 'astablishing|establising',
@@ -43,7 +38,6 @@ english = {'access': 'acess',
            'gallery': 'galery|gallary|gallerry|gallrey',
            'hierarchy': 'hierchy',
            'inconvenient': 'inconvienient|inconvient|inconvinient',
-           'independent': 'independant|independant',
            'initial': 'intial',
            'level': 'leval',
            'levels': 'levals',
@@ -60,16 +54,12 @@ english = {'access': 'acess',
            'pronunciation': 'pronounciation',
            'questionnaire': 'questionaire',
            'receive': 'recieve',
-           'refreshment': 'reafreshment|refreshmant|refresment|refressmunt',
-           'scarcely': 'scarcly|scarecly|scarely|scarsely',
+           'scarcely': 'scarcly|scarecly|scarely',
            'scissors': 'scisors|sissors',
-           'separate': 'seperate',
            'singular': 'singulaur',
            'someone': 'somone',
            'southern': 'southen',
            'special': 'speaical|specail|specal|speical',
-           'transferred': 'transfred',
-           'transportability': 'transportibility',
            'triangular': 'triangulaur',
            'unexpected': 'unexpcted|unexpeted|unexspected',
            'unfortunately': 'unfortunatly',
@@ -92,7 +82,6 @@ sentences = {
 }
 
 upper = {
-    'Pathrusim': 'Pathrusm',
     'USA': 'USA',
     'camelCased': 'camelCased',
     'I': 'I',
@@ -795,10 +784,11 @@ if __name__ == '__main__':
     elif command == 'find_threshold':
         lang = sys.argv[2]
         test = optional_language_tests[lang]
-        for threshold in [0, 1, 2, 4]:
+        for i in range(6, 30):
+            threshold = int(1.2 ** i) - 2
             spell = Speller(lang, threshold=threshold)
             bad = spelltest(spell, test, verbose=0)
-            print(f'threshold: {threshold}, bad: {bad}')
+            print(f'threshold: {threshold:3},   bad: {bad:3}')
     else:
         print('bad option, use:')
         print('./test_all.py [quality | benchmark | find_threshold [lang]]')

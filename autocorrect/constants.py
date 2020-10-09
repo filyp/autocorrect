@@ -29,9 +29,7 @@ alphabets = {
 
 urls = {
     'en': [
-        'https://dl.dropboxusercontent.com/s/jyyuqrtcbusw1kq/en.tar.gz?dl=0',
-        'https://dl.dropboxusercontent.com/s/cz6koxli82rqdia/en.tar.gz?dl=0',
-        'https://siasky.net/_AqMToyBioTOgKzTHwCsurBfeOwq4XGbV38ryEXwR_ULQA'],
+        'https://dl.dropboxusercontent.com/s/grxjmtw4db814g1/en.tar.gz?dl=0'],
     'pl': [
         'https://dl.dropboxusercontent.com/s/7izndbb0buoufcg/pl.tar.gz?dl=0',
         'https://dl.dropboxusercontent.com/s/3nfolvuz7clzuz4/pl.tar.gz?dl=0',

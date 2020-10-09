@@ -74,10 +74,10 @@ class Speller:
         self.fast = fast
 
         if threshold > 0:
-            print(f'Original number of words: {len(self.nlp_data)}')
+            # print(f'Original number of words: {len(self.nlp_data)}')
             self.nlp_data = {k: v for k, v in self.nlp_data.items()
                              if v >= threshold}
-            print(f'After applying threshold: {len(self.nlp_data)}')
+            # print(f'After applying threshold: {len(self.nlp_data)}')
 
     def existing(self, words):
         """{'the', 'teh'} => {'the'}"""
