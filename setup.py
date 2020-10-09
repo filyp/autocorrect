@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(name='autocorrect',
-      version='2.1.1',
+      version='2.1.2',
       python_requires='>=3.6',
       packages=['autocorrect'],
       package_data={'autocorrect': ['data/en.tar.gz']},
