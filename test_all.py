@@ -3,6 +3,7 @@ import sys
 import time
 
 from autocorrect import Speller
+from autocorrect.typos import Word
 
 english = {'access': 'acess',
            'accommodation': 'accomodation|acommodation|acomodation',
@@ -100,6 +101,139 @@ spanish_words_all_correct = {
     'umbral': 'unbral',
     'Estructura': 'Extructura',
     'para': 'praa',
+}
+
+single_typos_me = {
+    'ae',
+    'ame',
+    'be',
+    'bme',
+    'ce',
+    'cme',
+    'de',
+    'dme',
+    'e',
+    'ee',
+    'em',
+    'eme',
+    'fe',
+    'fme',
+    'ge',
+    'gme',
+    'he',
+    'hme',
+    'ie',
+    'ime',
+    'je',
+    'jme',
+    'ke',
+    'kme',
+    'le',
+    'lme',
+    'm',
+    'ma',
+    'mae',
+    'mb',
+    'mbe',
+    'mc',
+    'mce',
+    'md',
+    'mde',
+    'me',
+    'mea',
+    'meb',
+    'mec',
+    'med',
+    'mee',
+    'mef',
+    'meg',
+    'meh',
+    'mei',
+    'mej',
+    'mek',
+    'mel',
+    'mem',
+    'men',
+    'meo',
+    'mep',
+    'meq',
+    'mer',
+    'mes',
+    'met',
+    'meu',
+    'mev',
+    'mew',
+    'mex',
+    'mey',
+    'mez',
+    'mf',
+    'mfe',
+    'mg',
+    'mge',
+    'mh',
+    'mhe',
+    'mi',
+    'mie',
+    'mj',
+    'mje',
+    'mk',
+    'mke',
+    'ml',
+    'mle',
+    'mm',
+    'mme',
+    'mn',
+    'mne',
+    'mo',
+    'moe',
+    'mp',
+    'mpe',
+    'mq',
+    'mqe',
+    'mr',
+    'mre',
+    'ms',
+    'mse',
+    'mt',
+    'mte',
+    'mu',
+    'mue',
+    'mv',
+    'mve',
+    'mw',
+    'mwe',
+    'mx',
+    'mxe',
+    'my',
+    'mye',
+    'mz',
+    'mze',
+    'ne',
+    'nme',
+    'oe',
+    'ome',
+    'pe',
+    'pme',
+    'qe',
+    'qme',
+    're',
+    'rme',
+    'se',
+    'sme',
+    'te',
+    'tme',
+    'ue',
+    'ume',
+    've',
+    'vme',
+    'we',
+    'wme',
+    'xe',
+    'xme',
+    'ye',
+    'yme',
+    'ze',
+    'zme'
 }
 
 optional_language_tests = {
@@ -795,6 +929,11 @@ def test_empty():
     spell.autocorrect_word('')
 
 
+def test_single_typos():
+    word = Word('me', 'en')
+    assert set(word.typos()) == single_typos_me
+
+
 def test_spanish():
     spell_es = Speller('es')
     assert spelltest(spell_es, spanish_words_all_correct) == 0
@@ -816,8 +955,8 @@ if __name__ == '__main__':
         benchmark('english sentences', spell, sentences)
         spell = Speller('en', fast=True)
         benchmark('english sentences fast', spell, sentences)
-        spell = Speller('pl')
-        benchmark('polish words', spell, optional_language_tests['pl'])
+        spell = Speller('es')
+        benchmark('spanish words', spell, optional_language_tests['es'])
     elif command == 'find_threshold':
         lang = sys.argv[2]
         test = optional_language_tests[lang]

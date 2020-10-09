@@ -84,30 +84,30 @@ class Speller:
         return {word for word in words
                 if word in self.nlp_data}
 
+    def get_candidates(self, word):
+        w = Word(word, self.lang)
+        if self.fast:
+            candidates = (self.existing([word]) or
+                          self.existing(w.typos()) or
+                          [word])
+        else:
+            candidates = (self.existing([word]) or
+                          self.existing(w.typos()) or
+                          self.existing(w.double_typos()) or
+                          [word])
+        return [(self.nlp_data.get(c, 0), c) for c in candidates]
+
     def autocorrect_word(self, word):
         """most likely correction for everything up to a double typo"""
         if word == '':
             return ''
 
-        def get_candidates(word):
-            w = Word(word, self.lang)
-            if self.fast:
-                candidates = (self.existing([word]) or
-                              self.existing(w.typos()) or
-                              [word])
-            else:
-                candidates = (self.existing([word]) or
-                              self.existing(w.typos()) or
-                              self.existing(w.double_typos()) or
-                              [word])
-            return [(self.nlp_data.get(c, 0), c) for c in candidates]
-
-        candidates = get_candidates(word)
+        candidates = self.get_candidates(word)
 
         # in case the word is capitalized
         if word[0].isupper():
             decapitalized = word[0].lower() + word[1:]
-            candidates += get_candidates(decapitalized)
+            candidates += self.get_candidates(decapitalized)
 
         best_word = max(candidates)[1]
 
