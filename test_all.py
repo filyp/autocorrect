@@ -708,6 +708,14 @@ optional_language_tests = {
         'para': 'praa',
         'camión': 'cambión',
     },
+    'pt': {
+        'contigo': 'contgio',
+        'Comida': 'Conida',
+        'namorada': 'nanorada',
+        'corrida': 'corida',
+        'jogando futebol': 'jogado futbol',
+        'computador': 'computadr',
+    },
     'cs': {
         'celé': 'ďelé',
         'jedny': 'jedáy',
