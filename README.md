@@ -1,6 +1,5 @@
 # Autocorrect
 ![build](https://github.com/fsondej/autocorrect/workflows/build/badge.svg)
-[![PyPI version](https://badge.fury.io/py/autocorrect.svg)](https://badge.fury.io/py/autocorrect)
 [![Downloads](https://pepy.tech/badge/autocorrect?label=PyPI%20downloads)](https://pepy.tech/project/autocorrect)
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/fsondej/autocorrect.svg)](http://isitmaintained.com/project/fsondej/autocorrect "Average time to resolve an issue")
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/fsondej/autocorrect.svg)](http://isitmaintained.com/project/fsondej/autocorrect "Percentage of issues still open")
