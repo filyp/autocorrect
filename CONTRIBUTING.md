@@ -8,5 +8,5 @@ pre-commit install
 # When changing autocorrection logic
 Run this command before and after changes, and paste the output in the comments:
 ```
-python test_all.py quality ; python test_all.py benchmark
+python tests.py quality ; python tests.py benchmark
 ```

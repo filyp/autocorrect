@@ -713,8 +713,15 @@ optional_language_tests = {
         'Comida': 'Conida',
         'namorada': 'nanorada',
         'corrida': 'corida',
-        'jogando futebol': 'jogado futbol',
         'computador': 'computadr',
+        'estadunidense': 'estaunidense',
+        'decidiu': 'drcidiu',
+        'oportunidades': 'oportuniidades',
+        'atualmente': 'atualmentef',
+        'descoberto': 'descoverto',
+        'indicado': 'indixado',
+        'arrepende': 'arepende',
+        'declara': 'declada',
     },
     'cs': {
         'celé': 'ďelé',
@@ -975,4 +982,4 @@ if __name__ == '__main__':
             print(f'threshold: {threshold:3},   bad: {bad:3}')
     else:
         print('bad option, use:')
-        print('./test_all.py [quality | benchmark | find_threshold [lang]]')
+        print('./tests.py [quality | benchmark | find_threshold [lang]]')
