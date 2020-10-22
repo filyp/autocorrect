@@ -982,4 +982,4 @@ if __name__ == '__main__':
             print(f'threshold: {threshold:3},   bad: {bad:3}')
     else:
         print('bad option, use:')
-        print('./tests.py [quality | benchmark | find_threshold [lang]]')
+        print('./test_all.py [quality | benchmark | find_threshold [lang]]')

@@ -64,9 +64,9 @@ After that:
 tar -zcvf autocorrect/data/hi.tar.gz word_count.json
 ```
 
-For the correction to work well, you need to cut out rarely used words. First, in tests.py, write test words for your language, and add them to optional_language_tests the same way as it's done for other languages. It's good to have at least 30 words. Now run:
+For the correction to work well, you need to cut out rarely used words. First, in test_all.py, write test words for your language, and add them to optional_language_tests the same way as it's done for other languages. It's good to have at least 30 words. Now run:
 ```
-python ./tests.py find_threshold hi
+python test_all.py find_threshold hi
 ```
  and see which threshold value has the least badly corrected words. After that, manually delete all the words with less occurences than the threshold value you found, from the file in hi.tar.gz (it's already sorted so it should be easy).
 
