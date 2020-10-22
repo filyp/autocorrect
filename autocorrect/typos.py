@@ -19,7 +19,7 @@ from itertools import chain
 from autocorrect.constants import alphabets
 
 
-class Word(object):
+class Word:
     """container for word-based methods"""
     __slots__ = ['slices', 'word', 'alphabet']  # optimization
 

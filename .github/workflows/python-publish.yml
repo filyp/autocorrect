@@ -27,7 +27,7 @@ jobs:
         TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
-        # running pytest should ensure that English dict is downloaded 
+        # running pytest should ensure that English dict is downloaded
         pytest -s
         python setup.py sdist
         twine upload dist/*

@@ -1,0 +1,39 @@
+## https://pre-commit.com
+# pre-commit install --install-hooks
+#
+# Run hooks on repo:
+# pre-commit run --all-files [hook-id]
+#
+# Update repos:
+# pre-commit autoupdate
+---
+minimum_pre_commit_version: 2.4.0
+default_language_version:
+  python: python3
+default_stages: [commit]
+fail_fast: false
+exclude: ^$
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.3.0
+    hooks:
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: debug-statements
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+        files: \.(py|md)$
+        args: [--fix=lf]
+      - id: requirements-txt-fixer
+      - id: trailing-whitespace
+
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v2.7.2
+    hooks:
+      - id: pyupgrade
+        args: [--py36-plus]
+
+  - repo: https://gitlab.com/pycqa/flake8
+    rev: 3.8.4
+    hooks:
+      - id: flake8
