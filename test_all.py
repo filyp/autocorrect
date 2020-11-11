@@ -985,5 +985,3 @@ if __name__ == "__main__":
     else:
         print("bad option, use:")
         print("./test_all.py [quality | benchmark | find_threshold [lang]]")
-
-test_black = 1 / 2 + 1
