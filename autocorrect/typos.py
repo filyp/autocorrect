@@ -21,9 +21,10 @@ from autocorrect.constants import alphabets
 
 class Word:
     """container for word-based methods"""
-    __slots__ = ['slices', 'word', 'alphabet']  # optimization
 
-    def __init__(self, word, lang='en'):
+    __slots__ = ["slices", "word", "alphabet"]  # optimization
+
+    def __init__(self, word, lang="en"):
         """
         Generate slices to assist with typo
         definitions.
@@ -33,41 +34,38 @@ class Word:
 
         """
         slice_range = range(len(word) + 1)
-        self.slices = tuple((word[:i], word[i:])
-                            for i in slice_range)
+        self.slices = tuple((word[:i], word[i:]) for i in slice_range)
         self.word = word
         self.alphabet = alphabets[lang]
 
     def _deletes(self):
         """th"""
         for a, b in self.slices[:-1]:
-            yield ''.join((a, b[1:]))
+            yield "".join((a, b[1:]))
 
     def _transposes(self):
         """teh"""
         for a, b in self.slices[:-2]:
-            yield ''.join((a, b[1], b[0], b[2:]))
+            yield "".join((a, b[1], b[0], b[2:]))
 
     def _replaces(self):
         """tge"""
         for a, b in self.slices[:-1]:
             for c in self.alphabet:
-                yield ''.join((a, c, b[1:]))
+                yield "".join((a, c, b[1:]))
 
     def _inserts(self):
         """thwe"""
         for a, b in self.slices:
             for c in self.alphabet:
-                yield ''.join((a, c, b))
+                yield "".join((a, c, b))
 
     def typos(self):
         """letter combinations one typo away from word"""
-        return chain(self._deletes(),
-                     self._transposes(),
-                     self._replaces(),
-                     self._inserts())
+        return chain(
+            self._deletes(), self._transposes(), self._replaces(), self._inserts()
+        )
 
     def double_typos(self):
         """letter combinations two typos away from word"""
-        return chain.from_iterable(
-            Word(e1).typos() for e1 in self.typos())
+        return chain.from_iterable(Word(e1).typos() for e1 in self.typos())

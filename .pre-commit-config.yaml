@@ -20,12 +20,7 @@ repos:
       - id: check-merge-conflict
       - id: check-yaml
       - id: debug-statements
-      - id: end-of-file-fixer
-      - id: mixed-line-ending
-        files: \.(py|md)$
-        args: [--fix=lf]
       - id: requirements-txt-fixer
-      - id: trailing-whitespace
 
   - repo: https://github.com/asottile/pyupgrade
     rev: v2.7.2
@@ -33,7 +28,7 @@ repos:
       - id: pyupgrade
         args: [--py36-plus]
 
-  - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.8.4
-    hooks:
-      - id: flake8
+# -   repo: https://github.com/ambv/black
+#     rev: stable
+#     hooks:
+#     - id: black
