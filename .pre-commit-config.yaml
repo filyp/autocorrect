@@ -32,5 +32,4 @@ repos:
     rev: stable
     hooks:
       - id: black
-        args: [.]
-     
+        language_version: python3
