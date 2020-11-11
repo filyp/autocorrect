@@ -31,4 +31,6 @@ repos:
   - repo: https://github.com/ambv/black
     rev: stable
     hooks:
-    - id: black
+      - id: black
+        args: [.]
+     
