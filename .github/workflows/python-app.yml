@@ -25,9 +25,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install black pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Autoformat with black
+    - name: Ensure black style
       run: |
-        black .
+        black . --check
     - name: Test with pytest
       run: |
         pytest -s
