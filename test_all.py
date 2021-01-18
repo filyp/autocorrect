@@ -87,6 +87,15 @@ upper = {
     "I": "I",
 }
 
+only_replacements = {
+    "other": "ather",
+    "health": "heaith",
+    "should": "shauld",
+    "mental": "mentat",
+    "also": "aiso",
+    "order": "arder",
+}
+
 spanish_words_all_correct = {
     "hola": "hola",
     "hambre": "hanbre",
@@ -940,6 +949,11 @@ def test_sentences():
 
 def test_uppercase():
     assert spelltest(spell, upper) == 0
+
+
+def test_replacements():
+    spell_replace = Speller(only_replacements=True)
+    assert spelltest(spell_replace, only_replacements) == 0
 
 
 def test_empty():
