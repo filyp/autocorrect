@@ -94,6 +94,8 @@ only_replacements = {
     "mental": "mentat",
     "also": "aiso",
     "order": "arder",
+    "they": "thew",  # they, not the
+    "here": "herw",  # here, not her
 }
 
 spanish_words_all_correct = {
