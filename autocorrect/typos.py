@@ -22,9 +22,9 @@ from autocorrect.constants import alphabets
 class Word:
     """container for word-based methods"""
 
-    __slots__ = ["slices", "word", "alphabet"]  # optimization
+    __slots__ = ["slices", "word", "alphabet", "only_replacements"]  # optimization
 
-    def __init__(self, word, lang="en"):
+    def __init__(self, word, lang="en", only_replacements=False):
         """
         Generate slices to assist with typo
         definitions.
@@ -37,6 +37,7 @@ class Word:
         self.slices = tuple((word[:i], word[i:]) for i in slice_range)
         self.word = word
         self.alphabet = alphabets[lang]
+        self.only_replacements = only_replacements
 
     def _deletes(self):
         """th"""
@@ -62,10 +63,16 @@ class Word:
 
     def typos(self):
         """letter combinations one typo away from word"""
-        return chain(
-            self._deletes(), self._transposes(), self._replaces(), self._inserts()
-        )
+        if self.only_replacements:
+            return chain(self._replaces())
+        else:
+            return chain(
+                self._deletes(), self._transposes(), self._replaces(), self._inserts()
+            )
 
     def double_typos(self):
         """letter combinations two typos away from word"""
-        return chain.from_iterable(Word(e1).typos() for e1 in self.typos())
+        return chain.from_iterable(
+            Word(e1, only_replacements=self.only_replacements).typos()
+            for e1 in self.typos()
+        )

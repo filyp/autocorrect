@@ -41,6 +41,12 @@ spell = Speller(fast=True)
 ```
 Now, the correction should always work in microseconds, but words with double typos (like 'consiousnes') won't be corrected.
 
+# OCR
+When cleaning up OCR, replacements are the large majority of errors. If this is the case, you may want to use the option 'only_replacements':
+```python
+spell = Speller(only_replacements=True)
+```
+
 # Adding new languages
 First add special letters in autocorrect/constants.py.
 

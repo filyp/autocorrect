@@ -70,11 +70,14 @@ def load_from_tar(lang, file_name="word_count.json"):
 
 
 class Speller:
-    def __init__(self, lang="en", threshold=0, nlp_data=None, fast=False):
+    def __init__(
+        self, lang="en", threshold=0, nlp_data=None, fast=False, only_replacements=False
+    ):
         self.lang = lang
         self.threshold = threshold
         self.nlp_data = load_from_tar(lang) if nlp_data is None else nlp_data
         self.fast = fast
+        self.only_replacements = only_replacements
 
         if threshold > 0:
             # print(f'Original number of words: {len(self.nlp_data)}')
@@ -86,7 +89,7 @@ class Speller:
         return {word for word in words if word in self.nlp_data}
 
     def get_candidates(self, word):
-        w = Word(word, self.lang)
+        w = Word(word, self.lang, self.only_replacements)
         if self.fast:
             candidates = self.existing([word]) or self.existing(w.typos()) or [word]
         else:
