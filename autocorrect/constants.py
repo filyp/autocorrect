@@ -7,6 +7,7 @@ word_regexes = {
     "es": r"[A-Za-zÁáÉéÍíÓóÚúÜüÑñ]+",
     "pt": r"[a-zA-ZãáàâçéêíõóôúüÃÁÀÂÇÉÊÍÕÓÔÚÜ]+",
     "cs": r"[AÁBCČDĎEÉĚFGH(Ch)IÍJKLMNŇOÓPQRŘSŠTŤUÚŮVWXYÝZŽaábcčdďeéěfgh(ch)iíjklmnňoópqrřsštťuúůvwxyýzž]+",
+    "el": r"[α-ωΑ-ΩίϊΐόάέύϋΰήώΊΪΪ́ΌΆΈΎΫΫ́ΉΏ]+",
 }
 
 alphabets = {
@@ -18,6 +19,7 @@ alphabets = {
     "es": "abcdefghijklmnopqrstuvwxyzáéíóúüñ",
     "pt": "abcdefghijklmnopqrstuvwxyzãáàâçéêíõóôúü",
     "cs": "aábcčdďeéěfgh(ch)iíjklmnňoópqrřsštťuúůvwxyýzž",
+    "el": "αβγδεζηθικλμνξοπρςτυφχψωίϊΐόάέύϋΰήώ"
 }
 
 urls = {
