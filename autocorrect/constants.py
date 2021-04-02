@@ -19,7 +19,7 @@ alphabets = {
     "es": "abcdefghijklmnopqrstuvwxyzáéíóúüñ",
     "pt": "abcdefghijklmnopqrstuvwxyzãáàâçéêíõóôúü",
     "cs": "aábcčdďeéěfgh(ch)iíjklmnňoópqrřsštťuúůvwxyýzž",
-    "el": "αβγδεζηθικλμνξοπρςτυφχψωίϊΐόάέύϋΰήώ"
+    "el": "αβγδεζηθικλμνξοπρςτυφχψωίϊΐόάέύϋΰήώ",
 }
 
 urls = {
