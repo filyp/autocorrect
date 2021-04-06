@@ -54,7 +54,5 @@ urls = {
         "https://dl.dropboxusercontent.com/s/6xnko882tsjgeaw/pt.tar.gz?dl=0",
         "https://siasky.net/PAOmY66v3ggXpqNtbHQU_hb7ARNOL_Lv3LcTwFMMWmdzVw",
     ],
-    "el": [
-        "https://siasky.net/_AJlaSms3PwNqUtQANiyLLmFIHA1RyiXIU-o1wUN7FyofQ"
-    ]
+    "el": ["https://siasky.net/_AJlaSms3PwNqUtQANiyLLmFIHA1RyiXIU-o1wUN7FyofQ"],
 }
