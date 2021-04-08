@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name="autocorrect",
-    version="2.3.0",
+    version="2.4.0",
     python_requires=">=3.6",
     packages=["autocorrect"],
     package_data={"autocorrect": ["data/en.tar.gz"]},
@@ -22,6 +22,7 @@ setup(
         "Natural Language :: Spanish",
         "Natural Language :: Czech",
         "Natural Language :: Portuguese",
+        "Natural Language :: Greek",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
     ),
