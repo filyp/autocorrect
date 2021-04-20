@@ -62,5 +62,5 @@ urls = {
     ],
     "it": [
         "https://siasky.net/_B33wju4sWamVbwutPMpStZgqi1zKNcDu8_vdIz-wZWmkQ",
-    ]
+    ],
 }

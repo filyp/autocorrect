@@ -1006,7 +1006,7 @@ optional_language_tests = {
         "giovane": "giovnae",
         "cavallo": "cavatlo",
         "poltrona": "poltrola",
-    }
+    },
 }
 
 
@@ -1073,9 +1073,11 @@ def test_spanish():
     spell_es = Speller("es")
     assert spelltest(spell_es, spanish_words_all_correct) == 0
 
+
 def test_italian():
     spell_it = Speller("it")
     assert spelltest(spell_it, italian_words_all_correct) == 0
+
 
 if __name__ == "__main__":
     command = sys.argv[1]
