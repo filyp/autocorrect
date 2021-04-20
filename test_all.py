@@ -113,6 +113,18 @@ spanish_words_all_correct = {
     "para": "praa",
 }
 
+italian_words_all_correct = {
+    "ciao": "caio",
+    "male": "mlae",
+    "partire": "paltile",
+    "patata": "paatta",
+    "ordine": "oldine",
+    "leggero": "lezgero",
+    "carne": "canre",
+    "salute": "slaute",
+    "polipo": "popipo"
+}
+
 single_typos_me = {
     "ae",
     "ame",
@@ -968,6 +980,33 @@ optional_language_tests = {
         "národní": "nárbdní",
         "naplaveninách": "nwplaveninách",
     },
+    "it": {
+        "ciao": "ciap",
+        "nera": "nela",
+        "mamma": "mamna",
+        "dimenticare": "dimelticare",
+        "assaggiare": "assaggiale|assaggiael",
+        "portare": "poltare",
+        "voglio": "vollio",
+        "niente": "nente",
+        "però": "pelò",
+        "medaglia": "medagla|mdeaglia",
+        "annegare": "annegale",
+        "fare": "fale",
+        "polmone": "pormone",
+        "eseguire": "eseugire|esegurie",
+        "mangiare": "mamgiare",
+        "dormire": "dolmire|dirmire",
+        "cara": "cala",
+        "serpente": "selpente|serepnte",
+        "noia": "nioa",
+        "carne": "carme",
+        "salame": "saalme",
+        "chitarra": "chitalra|chitalla|chitara|kitarra",
+        "giovane": "giovnae",
+        "cavallo": "cavatlo",
+        "poltrona": "poltrola",
+    }
 }
 
 
@@ -1034,6 +1073,9 @@ def test_spanish():
     spell_es = Speller("es")
     assert spelltest(spell_es, spanish_words_all_correct) == 0
 
+def test_italian():
+    spell_it = Speller("it")
+    assert spelltest(spell_it, italian_words_all_correct) == 0
 
 if __name__ == "__main__":
     command = sys.argv[1]
@@ -1053,6 +1095,8 @@ if __name__ == "__main__":
         benchmark("english sentences fast", spell, sentences)
         spell = Speller("es")
         benchmark("spanish words", spell, optional_language_tests["es"])
+        spell = Speller("it")
+        benchmark("italian words", spell, optional_language_tests["it"])
     elif command == "find_threshold":
         lang = sys.argv[2]
         test = optional_language_tests[lang]
