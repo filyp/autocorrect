@@ -122,7 +122,7 @@ italian_words_all_correct = {
     "leggero": "lezgero",
     "carne": "canre",
     "salute": "slaute",
-    "polipo": "popipo"
+    "polipo": "popipo",
 }
 
 single_typos_me = {
