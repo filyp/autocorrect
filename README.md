@@ -5,7 +5,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/fsondej/autocorrect/badge)](https://www.codefactor.io/repository/github/fsondej/autocorrect)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-Spelling corrector in python. Currently supports English, Polish, Turkish, Russian, Ukrainian, Czech, Portuguese, Greek and Spanish, but you can easily add new languages.
+Spelling corrector in python. Currently supports English, Polish, Turkish, Russian, Ukrainian, Czech, Portuguese, Greek, Italian and Spanish, but you can easily add new languages.
 
 Based on: https://github.com/phatpiglet/autocorrect
 

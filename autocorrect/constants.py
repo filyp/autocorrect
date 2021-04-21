@@ -61,6 +61,7 @@ urls = {
         "https://siasky.net/_AJlaSms3PwNqUtQANiyLLmFIHA1RyiXIU-o1wUN7FyofQ",
     ],
     "it": [
+        "https://dl.dropboxusercontent.com/s/6xci1wfb387zk23/it.tar.gz?dl=0",
         "https://siasky.net/_B33wju4sWamVbwutPMpStZgqi1zKNcDu8_vdIz-wZWmkQ",
     ],
 }
