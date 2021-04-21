@@ -114,15 +114,17 @@ spanish_words_all_correct = {
 }
 
 italian_words_all_correct = {
-    "ciao": "caio",
     "male": "mlae",
     "partire": "paltile",
-    "patata": "paatta",
+    "piatta": "paatta",
     "ordine": "oldine",
     "leggero": "lezgero",
-    "carne": "canre",
+    "cane": "canre",
     "salute": "slaute",
     "polipo": "popipo",
+    "saltare": "saltale",
+    "formaggio": "formazzio",
+    "salto": "saulto",
 }
 
 single_typos_me = {
