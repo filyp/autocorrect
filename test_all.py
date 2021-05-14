@@ -1009,6 +1009,33 @@ optional_language_tests = {
         "cavallo": "cavatlo",
         "poltrona": "poltrola",
     },
+    "de": {
+        "Adresse": "Addresse",
+        "aggresiv": "aggresiv",
+        "brillant": "brilliant",
+        "Billard": "Billiard",
+        "Kommentar": "Komentar",
+        "persönlich": "persöhnlich",
+        "text": "texd|dext",
+        "mit": "mid|myt",
+        "ist": "isd",
+        "das": "daz",
+        "auf": "auv",
+        "als": "alß",
+        "sie": "zie",
+        "zur": "zurr",
+        "durch": "dürch",
+        "ISBN": "ISBM",
+        "eines": "einz",
+        "Zeit": "zeid",
+        "Autor": "Author",
+        "region": "regiön",
+        "Leben": "Lebem",
+        "Politiker": "Politicer",
+        "erhielt": "erhield",
+        "Hans": "Hanz",
+        "Kreis": "Kreiß",
+    }
 }
 
 
@@ -1079,7 +1106,10 @@ def test_spanish():
 def test_italian():
     spell_it = Speller("it")
     assert spelltest(spell_it, italian_words_all_correct) == 0
-
+    
+def test_german():
+    spell_de = Speller("de")
+    assert spelltest(spell_it, italian_words_all_correct) == 0
 
 if __name__ == "__main__":
     command = sys.argv[1]
