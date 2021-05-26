@@ -67,6 +67,6 @@ urls = {
         "https://siasky.net/_B33wju4sWamVbwutPMpStZgqi1zKNcDu8_vdIz-wZWmkQ",
     ],
     "de": [
-        "https://dl.dropboxusercontent.com/s/fgeveav4v074plm/de.tar.gz?dl=0",
+        "https://dl.dropboxusercontent.com/s/s2ysmb0olj32i4g/de.tar.gz?dl=0",
     ],
 }
