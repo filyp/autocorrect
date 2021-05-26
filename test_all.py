@@ -1035,7 +1035,7 @@ optional_language_tests = {
         "erhielt": "erhield",
         "Hans": "Hanz",
         "Kreis": "Kreiß",
-    }
+    },
 }
 
 
@@ -1106,10 +1106,12 @@ def test_spanish():
 def test_italian():
     spell_it = Speller("it")
     assert spelltest(spell_it, italian_words_all_correct) == 0
-    
+
+
 def test_german():
     spell_de = Speller("de")
     assert spelltest(spell_it, italian_words_all_correct) == 0
+
 
 if __name__ == "__main__":
     command = sys.argv[1]
