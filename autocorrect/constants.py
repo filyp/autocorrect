@@ -9,7 +9,7 @@ word_regexes = {
     "cs": r"[AÁBCČDĎEÉĚFGH(Ch)IÍJKLMNŇOÓPQRŘSŠTŤUÚŮVWXYÝZŽaábcčdďeéěfgh(ch)iíjklmnňoópqrřsštťuúůvwxyýzž]+",
     "el": r"[α-ωΑ-ΩίϊΐόάέύϋΰήώΊΪΪ́ΌΆΈΎΫΫ́ΉΏ]+",
     "it": r"[a-zA-ZãáàâçéêíõóôúüÃÁÀÂÇÉÊÍÕÓÔÚÜ]+",
-    "de": r"[a-zA-ZäöüÄÖÜß]+"
+    "de": r"[a-zA-ZäöüÄÖÜß]+",
 }
 
 alphabets = {
@@ -23,7 +23,7 @@ alphabets = {
     "cs": "aábcčdďeéěfgh(ch)iíjklmnňoópqrřsštťuúůvwxyýzž",
     "el": "αβγδεζηθικλμνξοπρςτυφχψωίϊΐόάέύϋΰήώ",
     "it": "abcdefghijklmnopqrstuvwxzyãáàâçéêíõóôúü",
-    "de": "abcdefghijklmnopqrstuvwxyzöäü"
+    "de": "abcdefghijklmnopqrstuvwxyzöäü",
 }
 
 urls = {
@@ -65,5 +65,8 @@ urls = {
     "it": [
         "https://dl.dropboxusercontent.com/s/6xci1wfb387zk23/it.tar.gz?dl=0",
         "https://siasky.net/_B33wju4sWamVbwutPMpStZgqi1zKNcDu8_vdIz-wZWmkQ",
+    ],
+    "de": [
+        "https://dl.dropboxusercontent.com/s/fgeveav4v074plm/de.tar.gz?dl=0",
     ],
 }
