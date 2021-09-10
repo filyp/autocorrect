@@ -78,6 +78,3 @@ python test_all.py find_threshold hi
  and see which threshold value has the least badly corrected words. After that, manually delete all the words with less occurences than the threshold value you found, from the file in hi.tar.gz (it's already sorted so it should be easy).
 
 If you do it, please make a pull request. Good luck!
-
-# Contribute
-https://github.com/fsondej/autocorrect
