@@ -7,7 +7,7 @@ import textwrap
 from contextlib import closing
 from urllib.request import urlretrieve
 
-from autocorrect.constants import word_regexes, urls
+from autocorrect.constants import word_regexes, backup_urls, ipfs_gateways, ipfs_paths
 from autocorrect.typos import Word
 
 PATH = os.path.abspath(os.path.dirname(__file__))
@@ -48,7 +48,12 @@ def load_from_tar(lang, file_name="word_count.json"):
 
     if not os.path.isfile(archive_name):
         print("dictionary for this language not found, downloading...")
-        for url in urls[lang]:
+        urls = [
+            gateway + path for gateway in ipfs_gateways for path in ipfs_paths[lang]
+        ]
+        if lang in backup_urls:
+            urls += backup_urls[lang]
+        for url in urls:
             progress = ProgressBar()
             try:
                 urlretrieve(url, archive_name, progress.download_progress_hook)

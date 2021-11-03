@@ -24,78 +24,59 @@ alphabets = {
     "it": "abcdefghijklmnopqrstuvwxzyãáàâçéêíõóôúü",
 }
 
-urls = {
+ipfs_gateways = [
+    "http://ipfs.io/ipfs/",
+    "https://gateway.pinata.cloud/ipfs/",
+    "https://cf-ipfs.com/ipfs/",  # this one has the best performance, but doesn't return download progress
+]
+
+ipfs_paths = {
+    "en": ["QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/en.tar.gz"],
+    "pl": ["QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/pl.tar.gz"],
+    "ru": ["QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/ru.tar.gz"],
+    "uk": ["QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/uk.tar.gz"],
+    "tr": ["QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/tr.tar.gz"],
+    "es": ["QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/es.tar.gz"],
+    "cs": ["QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/cs.tar.gz"],
+    "pt": ["QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/pt.tar.gz"],
+    "el": ["QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/el.tar.gz"],
+    "it": ["QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/it.tar.gz"],
+}
+
+backup_urls = {
     "en": [
-        "https://cf-ipfs.com/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/en.tar.gz",
-        "https://gateway.pinata.cloud/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/en.tar.gz",
-        "http://ipfs.io/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/en.tar.gz",
         "https://dl.dropboxusercontent.com/s/grxjmtw4db814g1/en.tar.gz?dl=0",
     ],
     "pl": [
-        "https://cf-ipfs.com/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/pl.tar.gz",
-        "https://gateway.pinata.cloud/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/pl.tar.gz",
-        "http://ipfs.io/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/pl.tar.gz",
         "https://dl.dropboxusercontent.com/s/40orabi1l3dfqpp/pl.tar.gz?dl=0",
     ],
     "ru": [
-        "https://cf-ipfs.com/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/ru.tar.gz",
-        "https://gateway.pinata.cloud/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/ru.tar.gz",
-        "http://ipfs.io/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/ru.tar.gz",
         "https://dl.dropboxusercontent.com/s/mpas7xqn8yl3wej/ru.tar.gz?dl=0",
         "https://dl.dropboxusercontent.com/s/6tzfxy34xx34mm7/ru.tar.gz?dl=0",
-        "https://siasky.net/AABaSQMcxgHp7LJ-YHs1IWqn4uxa8q17fGET-IaNbGgSnQ",
     ],
     "uk": [
-        "https://cf-ipfs.com/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/uk.tar.gz",
-        "https://gateway.pinata.cloud/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/uk.tar.gz",
-        "http://ipfs.io/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/uk.tar.gz",
         "https://dl.dropboxusercontent.com/s/s64ot0l4lj3a0ec/uk.tar.gz?dl=0",
         "https://dl.dropboxusercontent.com/s/b76p4sc1lld96lw/uk.tar.gz?dl=0",
-        "https://siasky.net/AADdpauxvMwjieU3n5qaMbjAeCYR9T-vK6L1OEXRTOgr6g",
     ],
     "tr": [
-        "https://cf-ipfs.com/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/tr.tar.gz",
-        "https://gateway.pinata.cloud/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/tr.tar.gz",
-        "http://ipfs.io/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/tr.tar.gz",
         "https://dl.dropboxusercontent.com/s/mj2d3t158ucwhwx/tr.tar.gz?dl=0",
         "https://dl.dropboxusercontent.com/s/1wy01nq5fpq8iay/tr.tar.gz?dl=0",
-        "https://siasky.net/AABWRhJ-7NVoo2vaTgSs6HNhwGmFgCgYzg0q_0d-eqgCeA",
     ],
     "es": [
-        "https://cf-ipfs.com/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/es.tar.gz",
-        "https://gateway.pinata.cloud/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/es.tar.gz",
-        "http://ipfs.io/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/es.tar.gz",
         "https://dl.dropboxusercontent.com/s/jh0212sou1qbs7t/es.tar.gz?dl=0",
         "https://dl.dropboxusercontent.com/s/k6g5vj3x0rx7mjz/es.tar.gz?dl=0",
-        "https://siasky.net/_ArsYbh-vpFWosvzEuQQZnPrOt2XggjDQfkvDwTFu5MQoA",
     ],
     "cs": [
-        "https://cf-ipfs.com/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/cs.tar.gz",
-        "https://gateway.pinata.cloud/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/cs.tar.gz",
-        "http://ipfs.io/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/cs.tar.gz",
         "https://dl.dropboxusercontent.com/s/8ptuuh8kcr3kufy/cs.tar.gz?dl=0",
         "https://dl.dropboxusercontent.com/s/369wplqb0w2ax21/cs.tar.gz?dl=0",
-        "https://siasky.net/AAC6lW1ShlSRUeiFnr4_2bmw6sznlZsWvmhDhyQy_-g2wA",
     ],
     "pt": [
-        "https://cf-ipfs.com/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/pt.tar.gz",
-        "https://gateway.pinata.cloud/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/pt.tar.gz",
-        "http://ipfs.io/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/pt.tar.gz",
         "https://dl.dropboxusercontent.com/s/6xnko882tsjgeaw/pt.tar.gz?dl=0",
-        "https://siasky.net/PAOmY66v3ggXpqNtbHQU_hb7ARNOL_Lv3LcTwFMMWmdzVw",
     ],
     "el": [
-        "https://cf-ipfs.com/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/el.tar.gz",
-        "https://gateway.pinata.cloud/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/el.tar.gz",
-        "http://ipfs.io/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/el.tar.gz",
         "https://dl.dropboxusercontent.com/s/2zdewe1p1od9vu0/el.tar.gz?dl=0",
-        "https://siasky.net/_AJlaSms3PwNqUtQANiyLLmFIHA1RyiXIU-o1wUN7FyofQ",
     ],
     "it": [
-        "https://cf-ipfs.com/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/it.tar.gz",
-        "https://gateway.pinata.cloud/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/it.tar.gz",
-        "http://ipfs.io/ipfs/QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/it.tar.gz",
         "https://dl.dropboxusercontent.com/s/6xci1wfb387zk23/it.tar.gz?dl=0",
-        "https://siasky.net/_B33wju4sWamVbwutPMpStZgqi1zKNcDu8_vdIz-wZWmkQ",
     ],
 }
