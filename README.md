@@ -77,4 +77,6 @@ python test_all.py find_threshold hi
 ```
  and see which threshold value has the least badly corrected words. After that, manually delete all the words with less occurences than the threshold value you found, from the file in hi.tar.gz (it's already sorted so it should be easy).
 
-If you do it, please make a pull request. Good luck!
+If you do all that, you can make a pull request to add your language to this library. You will need to upload your tar.gz file to IPFS (for example with Pinata, which will pin this file so it doesn't disappear), and then add it's path to `ipfs_paths` in `constants.py`. Or you can share it with me and I will upload it.
+
+Good luck!
