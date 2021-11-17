@@ -49,7 +49,7 @@ spell = Speller(only_replacements=True)
 ```
 
 # Adding new languages
-First add special letters in autocorrect/constants.py.
+First define special letters, by adding entries in `word_regexes` and `alphabets` dicts in autocorrect/constants.py.
 
 Now, you need a bunch of text. Easiest way is to download wikipedia.
 For example for Hindi go to:
