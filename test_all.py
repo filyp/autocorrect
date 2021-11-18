@@ -128,17 +128,16 @@ italian_words_all_correct = {
 }
 
 french_words_all_correct = {
-    "mal": "mla",
-    "partir": "paltil",
-    "plat": "paat",
     "ordre": "oldre",
     "leger": "lezger",
-    "chien": "cnhier",
-    "salut": "slaut",
+    "cahier": "cnhier",
+    "saut": "slaut",
     "vache": "vacne",
-    "sauter": "santel",
-    "fromage": "formazze",
+    "fromage": "fromae",
     "bisous": "biosus",
+    "possible": "possable",
+    "position": "posizion",
+    "populaire": "popularie"
 }
 
 single_typos_me = {
