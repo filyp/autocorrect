@@ -1054,7 +1054,7 @@ optional_language_tests = {
         "pôle": "pole",
         "qui": "uui",
         "experience": "escpehience",
-    }
+    },
 }
 
 

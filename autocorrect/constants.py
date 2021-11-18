@@ -83,7 +83,5 @@ backup_urls = {
     "it": [
         "https://dl.dropboxusercontent.com/s/6xci1wfb387zk23/it.tar.gz?dl=0",
     ],
-    "fr": [
-        "https://mega.nz/file/kQByQJAb#rMbmF0HG09MLQQ-FDafHrPAgXigJIpmC1zhtxRMp2dQ"
-    ]
+    "fr": ["https://mega.nz/file/kQByQJAb#rMbmF0HG09MLQQ-FDafHrPAgXigJIpmC1zhtxRMp2dQ"],
 }
