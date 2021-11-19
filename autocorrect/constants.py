@@ -43,6 +43,7 @@ ipfs_paths = {
     "pt": ["QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/pt.tar.gz"],
     "el": ["QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/el.tar.gz"],
     "it": ["QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/it.tar.gz"],
+    "vi": ["QmRRJj5i7nkpzTRSKhFe23XMjLRw7f2zD6FLKDrRfzco7f/vi.tar.gz"],
 }
 
 backup_urls = {
