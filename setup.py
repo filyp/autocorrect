@@ -24,6 +24,7 @@ setup(
         "Natural Language :: Portuguese",
         "Natural Language :: Greek",
         "Natural Language :: Italian",
+        "Natural Language :: Vietnamese",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
     ),
