@@ -1067,8 +1067,8 @@ optional_language_tests = {
         "thuốc": "thuóc",
         "toàn": "toan",
         "giãn": "giăn",
-        "mau": "mảu"
-    }
+        "mau": "mảu",
+    },
 }
 
 
