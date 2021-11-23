@@ -52,28 +52,28 @@ spell = Speller(only_replacements=True)
 First, define special letters, by adding entries in `word_regexes` and `alphabets` dicts in autocorrect/constants.py.
 
 Now, you need a bunch of text. Easiest way is to download wikipedia.
-For example for Hindi go to:
-https://dumps.wikimedia.org/hiwiki/latest/
-and download hiwiki-latest-pages-articles.xml.bz2
+For example for Russian you would go to:
+https://dumps.wikimedia.org/ruwiki/latest/
+and download ruwiki-latest-pages-articles.xml.bz2
 
 ```
-bzip2 -d hiwiki-latest-pages-articles.xml.bz2
+bzip2 -d ruiwiki-latest-pages-articles.xml.bz2
 ```
 
 After that:
 
 ```python
 >>> from autocorrect.word_count import count_words
->>> count_words('hiwiki-latest-pages-articles.xml', 'hi')
+>>> count_words('ruwiki-latest-pages-articles.xml', 'ru')
 ```
 
 ```
-tar -zcvf autocorrect/data/hi.tar.gz word_count.json
+tar -zcvf autocorrect/data/ru.tar.gz word_count.json
 ```
 
 For the correction to work well, you need to cut out rarely used words. First, in test_all.py, write test words for your language, and add them to optional_language_tests the same way as it's done for other languages. It's good to have at least 30 words. Now run:
 ```
-python test_all.py find_threshold hi
+python test_all.py find_threshold ru
 ```
  and see which threshold value has the least badly corrected words. After that, manually delete all the words with less occurences than the threshold value you found, from the file in hi.tar.gz (it's already sorted so it should be easy).
 
