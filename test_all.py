@@ -137,7 +137,7 @@ french_words_all_correct = {
     "bisous": "biosus",
     "possible": "possable",
     "position": "posizion",
-    "populaire": "popularie"
+    "populaire": "popularie",
 }
 
 single_typos_me = {
