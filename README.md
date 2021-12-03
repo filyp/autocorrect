@@ -5,7 +5,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/fsondej/autocorrect/badge)](https://www.codefactor.io/repository/github/fsondej/autocorrect)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-Spelling corrector in python. Currently supports English, Polish, Turkish, Russian, Ukrainian, Czech, Portuguese, Greek, Italian and Spanish, but you can easily add new languages.
+Spelling corrector in python. Currently supports English, Polish, Turkish, Russian, Ukrainian, Czech, Portuguese, Greek, Italian, Vietnamese and Spanish, but you can easily add new languages.
 
 Based on: https://github.com/phatpiglet/autocorrect
 
@@ -52,12 +52,12 @@ spell = Speller(only_replacements=True)
 First, define special letters, by adding entries in `word_regexes` and `alphabets` dicts in autocorrect/constants.py.
 
 Now, you need a bunch of text. Easiest way is to download wikipedia.
-For example for Hindi go to:
-https://dumps.wikimedia.org/hiwiki/latest/
-and download hiwiki-latest-pages-articles.xml.bz2
+For example for Russian you would go to:
+https://dumps.wikimedia.org/ruwiki/latest/
+and download ruwiki-latest-pages-articles.xml.bz2
 
 ```
-bzip2 -d hiwiki-latest-pages-articles.xml.bz2
+bzip2 -d ruiwiki-latest-pages-articles.xml.bz2
 ```
 
 After that:
@@ -68,19 +68,19 @@ Then:
 
 ```python
 >>> from autocorrect.word_count import count_words
->>> count_words('hiwiki-latest-pages-articles.xml', 'hi')
+>>> count_words('ruwiki-latest-pages-articles.xml', 'ru')
 ```
 
 ```
-tar -zcvf autocorrect/data/hi.tar.gz word_count.json
+tar -zcvf autocorrect/data/ru.tar.gz word_count.json
 ```
 
 For the correction to work well, you need to cut out rarely used words. First, in test_all.py, write test words for your language, and add them to optional_language_tests the same way as it's done for other languages. It's good to have at least 30 words. Now run:
 ```
-python test_all.py find_threshold hi
+python test_all.py find_threshold ru
 ```
  and see which threshold value has the least badly corrected words. After that, manually delete all the words with less occurences than the threshold value you found, from the file in hi.tar.gz (it's already sorted so it should be easy).
 
-If you do all that, you can make a pull request to add your language to this library. You will need to upload your tar.gz file to IPFS (for example with Pinata, which will pin this file so it doesn't disappear), and then add it's path to `ipfs_paths` in `constants.py`. Or you can just share it with me and I will upload it.
+To distribute this language support to others, you will need to upload your tar.gz file to IPFS (for example with Pinata, which will pin this file so it doesn't disappear), and then add it's path to `ipfs_paths` in `constants.py`.
 
 Good luck!

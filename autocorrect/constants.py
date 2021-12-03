@@ -10,6 +10,7 @@ word_regexes = {
     "el": r"[α-ωΑ-ΩίϊΐόάέύϋΰήώΊΪΪ́ΌΆΈΎΫΫ́ΉΏ]+",
     "it": r"[a-zA-ZãáàâçéêíõóôúüÃÁÀÂÇÉÊÍÕÓÔÚÜ]+",
     "fr": r"[a-zA-ZãáàâçéêíõóôúüÃÁÀÂÇÉÊÍÕÓÔÚÜ]+",
+    "vi": r"[a-zA-ZàáạảãÀÁẠẢÃằắặẳẵẰẮẶẲẴầấậẩẫẦẤẬẨẪèéẹẻẽÈÉẸẺẼềếệểễỀẾỆỂỄìíịỉĩÌÍỊỈĨòóọỏõÒÓỌỎÕồốộổỗỒỐỘỔỖờớợởỡỜỚỢỞỠùúụủũÙÚỤỦŨừứựửữỪỨỰỬỮỳýỵỷỹỲÝỴỶỸ]+",
 }
 
 alphabets = {
@@ -24,6 +25,7 @@ alphabets = {
     "el": "αβγδεζηθικλμνξοπρςτυφχψωίϊΐόάέύϋΰήώ",
     "it": "abcdefghijklmnopqrstuvwxzyãáàâçéêíõóôúü",
     "fr": "abcdefghijklmnopqrstuvwxzyãáàâçéêíõóôúü",
+    "vi": "aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz",
 }
 
 ipfs_gateways = [
@@ -45,6 +47,7 @@ ipfs_paths = {
     "el": ["QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/el.tar.gz"],
     "it": ["QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/it.tar.gz"],
     "fr": ["QmPRNDmUDTXikq8gWnGcw3ZGmnoBfvekmAyeyX8y6onf23/fr.tar.gz"],
+    "vi": ["QmRRJj5i7nkpzTRSKhFe23XMjLRw7f2zD6FLKDrRfzco7f/vi.tar.gz"],
 }
 
 backup_urls = {

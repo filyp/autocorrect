@@ -14,7 +14,7 @@ def get_words(filename, lang, encd):
             yield from re.findall(word_regex, line)
 
 
-def count_words(src_filename, lang, encd=None, out_filename="word_count.json"):
+def count_words(src_filename, lang, encd="utf-8", out_filename="word_count.json"):
     words = get_words(src_filename, lang, encd)
     counts = Counter(words)
     # make output file human readable
