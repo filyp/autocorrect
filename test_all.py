@@ -127,6 +127,19 @@ italian_words_all_correct = {
     "salto": "saulto",
 }
 
+french_words_all_correct = {
+    "ordre": "oldre",
+    "leger": "lezger",
+    "cahier": "cnhier",
+    "saut": "slaut",
+    "vache": "vacne",
+    "fromage": "fromae",
+    "bisous": "biosus",
+    "possible": "possable",
+    "position": "posizion",
+    "populaire": "popularie",
+}
+
 single_typos_me = {
     "ae",
     "ame",
@@ -1009,6 +1022,38 @@ optional_language_tests = {
         "cavallo": "cavatlo",
         "poltrona": "poltrola",
     },
+    "fr": {
+        "disparu": "disparue",
+        "atteint": "atteind",
+        "croient": "croyent",
+        "cicogne": "cygogne",
+        "electronique": "électronique",
+        "bien": "bein",
+        "connexion": "connection",
+        "galerie": "gallerie",
+        "meilleur": "meiileur",
+        "obnubiler": "obnibuler",
+        "oculaire": "ocualire",
+        "télescope": "teiescope",
+        "valeur": "vaelur",
+        "vertu": "veltu",
+        "salade": "saiade",
+        "renommer": "renomner",
+        "sibyllin": "sibuliin",
+        "successeur": "succaszeur",
+        "écologie": "ecoiogie",
+        "éloge": "elogie",
+        "emménager": "ennenager",
+        "cheval": "clreval",
+        "permis": "pennis",
+        "recueillir": "recuelilir",
+        "martel": "manel",
+        "veux": "vuex",
+        "emploi": "emnloi",
+        "pôle": "pole",
+        "qui": "uui",
+        "experience": "escpehience",
+    },
     "vi": {
         "hiếu": "hiéu",
         "hiền": "hién",
@@ -1141,6 +1186,11 @@ def test_italian():
     assert spelltest(spell_it, italian_words_all_correct) == 0
 
 
+def test_french():
+    spell_fr = Speller("fr")
+    assert spelltest(spell_fr, french_words_all_correct) == 0
+
+
 if __name__ == "__main__":
     command = sys.argv[1]
 
@@ -1161,6 +1211,8 @@ if __name__ == "__main__":
         benchmark("spanish words", spell, optional_language_tests["es"])
         spell = Speller("it")
         benchmark("italian words", spell, optional_language_tests["it"])
+        spell = Speller("fr")
+        benchmark("french words", spell, optional_language_tests["fr"])
     elif command == "find_threshold":
         lang = sys.argv[2]
         test = optional_language_tests[lang]

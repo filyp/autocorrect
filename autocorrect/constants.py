@@ -9,6 +9,7 @@ word_regexes = {
     "cs": r"[AÁBCČDĎEÉĚFGH(Ch)IÍJKLMNŇOÓPQRŘSŠTŤUÚŮVWXYÝZŽaábcčdďeéěfgh(ch)iíjklmnňoópqrřsštťuúůvwxyýzž]+",
     "el": r"[α-ωΑ-ΩίϊΐόάέύϋΰήώΊΪΪ́ΌΆΈΎΫΫ́ΉΏ]+",
     "it": r"[a-zA-ZãáàâçéêíõóôúüÃÁÀÂÇÉÊÍÕÓÔÚÜ]+",
+    "fr": r"[a-zA-ZãáàâçéêíõóôúüÃÁÀÂÇÉÊÍÕÓÔÚÜ]+",
     "vi": r"[a-zA-ZàáạảãÀÁẠẢÃằắặẳẵẰẮẶẲẴầấậẩẫẦẤẬẨẪèéẹẻẽÈÉẸẺẼềếệểễỀẾỆỂỄìíịỉĩÌÍỊỈĨòóọỏõÒÓỌỎÕồốộổỗỒỐỘỔỖờớợởỡỜỚỢỞỠùúụủũÙÚỤỦŨừứựửữỪỨỰỬỮỳýỵỷỹỲÝỴỶỸ]+",
 }
 
@@ -23,13 +24,15 @@ alphabets = {
     "cs": "aábcčdďeéěfgh(ch)iíjklmnňoópqrřsštťuúůvwxyýzž",
     "el": "αβγδεζηθικλμνξοπρςτυφχψωίϊΐόάέύϋΰήώ",
     "it": "abcdefghijklmnopqrstuvwxzyãáàâçéêíõóôúü",
+    "fr": "abcdefghijklmnopqrstuvwxzyãáàâçéêíõóôúü",
     "vi": "aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz",
 }
 
 ipfs_gateways = [
     "http://ipfs.io/ipfs/",
     "https://gateway.pinata.cloud/ipfs/",
-    "https://cf-ipfs.com/ipfs/",  # this one has the best performance, but doesn't return download progress
+    # this one has the best performance, but doesn't return download progress
+    "https://cf-ipfs.com/ipfs/",
 ]
 
 ipfs_paths = {
@@ -43,6 +46,7 @@ ipfs_paths = {
     "pt": ["QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/pt.tar.gz"],
     "el": ["QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/el.tar.gz"],
     "it": ["QmbRSZvfJV6zN12zzWhecphcvE9ZBeQdAJGQ9c9ttJXzcg/it.tar.gz"],
+    "fr": ["QmPRNDmUDTXikq8gWnGcw3ZGmnoBfvekmAyeyX8y6onf23/fr.tar.gz"],
     "vi": ["QmRRJj5i7nkpzTRSKhFe23XMjLRw7f2zD6FLKDrRfzco7f/vi.tar.gz"],
 }
 
@@ -82,4 +86,5 @@ backup_urls = {
     "it": [
         "https://dl.dropboxusercontent.com/s/6xci1wfb387zk23/it.tar.gz?dl=0",
     ],
+    "fr": ["https://mega.nz/file/kQByQJAb#rMbmF0HG09MLQQ-FDafHrPAgXigJIpmC1zhtxRMp2dQ"],
 }

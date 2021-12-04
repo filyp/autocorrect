@@ -62,6 +62,10 @@ bzip2 -d ruiwiki-latest-pages-articles.xml.bz2
 
 After that:
 
+First, edit the `autocorrect.constants` dictionaries in order to accommodate regexes and dictionaries for your language.
+
+Then:
+
 ```python
 >>> from autocorrect.word_count import count_words
 >>> count_words('ruwiki-latest-pages-articles.xml', 'ru')
