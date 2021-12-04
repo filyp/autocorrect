@@ -5,7 +5,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/fsondej/autocorrect/badge)](https://www.codefactor.io/repository/github/fsondej/autocorrect)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-Spelling corrector in python. Currently supports English, Polish, Turkish, Russian, Ukrainian, Czech, Portuguese, Greek, Italian, Vietnamese and Spanish, but you can easily add new languages.
+Spelling corrector in python. Currently supports English, Polish, Turkish, Russian, Ukrainian, Czech, Portuguese, Greek, Italian, Vietnamese, French and Spanish, but you can easily add new languages.
 
 Based on: https://github.com/phatpiglet/autocorrect
 
@@ -81,6 +81,6 @@ python test_all.py find_threshold ru
 ```
  and see which threshold value has the least badly corrected words. After that, manually delete all the words with less occurences than the threshold value you found, from the file in hi.tar.gz (it's already sorted so it should be easy).
 
-To distribute this language support to others, you will need to upload your tar.gz file to IPFS (for example with Pinata, which will pin this file so it doesn't disappear), and then add it's path to `ipfs_paths` in `constants.py`.
+To distribute this language support to others, you will need to upload your tar.gz file to IPFS (for example with Pinata, which will pin this file so it doesn't disappear), and then add it's path to `ipfs_paths` in `constants.py`. (tip: first put this file inside the folder, and upload the folder to IPFS, for the downloaded file to have the correct filename)
 
 Good luck!
