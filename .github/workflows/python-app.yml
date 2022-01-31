@@ -29,7 +29,8 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Ensure black style
       run: |
-        black . --check --verbose
+        black --version
+        black . --check --diff
     - name: Test with pytest
       run: |
         pytest -s
