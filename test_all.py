@@ -1217,7 +1217,7 @@ if __name__ == "__main__":
         lang = sys.argv[2]
         test = optional_language_tests[lang]
         for i in range(6, 30):
-            threshold = int(1.2 ** i) - 2
+            threshold = int(1.2**i) - 2
             spell = Speller(lang, threshold=threshold)
             bad = spelltest(spell, test, verbose=0)
             print(f"threshold: {threshold:3},   bad: {bad:3}")
