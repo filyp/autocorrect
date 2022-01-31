@@ -2,7 +2,7 @@
 ![build](https://github.com/fsondej/autocorrect/workflows/build/badge.svg)
 [![Downloads](https://pepy.tech/badge/autocorrect?label=PyPI%20downloads)](https://pepy.tech/project/autocorrect)
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/fsondej/autocorrect.svg)](http://isitmaintained.com/project/fsondej/autocorrect "Average time to resolve an issue")
-[![CodeFactor](https://www.codefactor.io/repository/github/fsondej/autocorrect/badge)](https://www.codefactor.io/repository/github/fsondej/autocorrect)
+[![CodeFactor](https://www.codefactor.io/repository/github/filyp/autocorrect/badge)](https://www.codefactor.io/repository/github/filyp/autocorrect)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 Spelling corrector in python. Currently supports English, Polish, Turkish, Russian, Ukrainian, Czech, Portuguese, Greek, Italian, Vietnamese, French and Spanish, but you can easily add new languages.
