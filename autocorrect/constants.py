@@ -31,8 +31,7 @@ alphabets = {
 ipfs_gateways = [
     "http://ipfs.io/ipfs/",
     "https://gateway.pinata.cloud/ipfs/",
-    # this one has the best performance, but doesn't return download progress
-    "https://cf-ipfs.com/ipfs/",
+    "https://cf-ipfs.com/ipfs/",  # this one has the best performance, but doesn't return download progress
 ]
 
 ipfs_paths = {

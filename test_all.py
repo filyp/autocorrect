@@ -1126,11 +1126,7 @@ def spelltest(speller, tests, verbose=2):
             if w != target:
                 bad += 1
                 if verbose >= 2:
-                    print(
-                        "spell({}) => {}; should be {}".format(
-                            incorrect_spelling, w, target
-                        )
-                    )
+                    print(f"spell({incorrect_spelling}) => {w}; should be {target}")
     if verbose >= 1:
         print(f"bad: {bad}/{n}")
     return bad
