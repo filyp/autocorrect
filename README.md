@@ -53,7 +53,7 @@ If you wish to use your own set of words for autocorrection, you can pass an `nl
 ```python
 spell = Speller(nlp_data=your_word_frequency_dict)
 ```
-Where `your_word_frequency_dict` is a dictionary which maps words to their average frequencies in your text.
+Where `your_word_frequency_dict` is a dictionary which maps words to their average frequencies in your text. If you want to change the default word set only a bit, you can just edit `spell.nlp_data` parameter, after `spell` was initialized.
 
 # Adding new languages
 First, define special letters, by adding entries in `word_regexes` and `alphabets` dicts in autocorrect/constants.py.
