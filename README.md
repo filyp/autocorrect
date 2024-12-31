@@ -14,16 +14,31 @@ pip install autocorrect
 ```
 
 # Examples
+
+Autocorrect full sentences:
+
 ```python
 >>> from autocorrect import Speller
 >>> spell = Speller()
 >>> spell("I'm not sleapy and tehre is no place I'm giong to.")
 "I'm not sleepy and there is no place I'm going to."
+```
 
+Use other languages:
+
+```python
 >>> spell = Speller('pl')
 >>> spell('ptaaki latatją kluczmm')
 'ptaki latają kluczem'
 ```
+
+Get multiple correction candidates for a single word:
+
+```python
+>>> spell.get_candidates("tehre")
+[(5437024, 'there'), (5860, 'terre')]
+```
+The numbers are frequencies of a word, so the higher, the better.
 
 # Speed
 ```python
