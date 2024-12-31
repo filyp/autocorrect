@@ -71,6 +71,15 @@ spell = Speller(nlp_data=your_word_frequency_dict)
 Where `your_word_frequency_dict` is a dictionary which maps words to their average frequencies in your text. If you want to change the default word set only a bit, you can just edit `spell.nlp_data` parameter, after `spell` was initialized.
 
 # Adding new languages
+
+## A simpler but untested way - wordfreq
+
+It should be possible to get word frequencies from the [wordfreq](https://github.com/rspeer/wordfreq/) package. You should be able to provide this word frequency data to autocorrector through `nlp_data` parameter. You will also need to generate appropriate alphabet (see `constants.py`).
+
+## A more complicated but tested way - wikipedia text
+
+*Note: I will no longer accept PRs to add individual languages using this method. A more sensible approach would be to try using the wordfreq method, and adding many languages at once in some general way. But I don't have time to implement this myself.*
+
 First, define special letters, by adding entries in `word_regexes` and `alphabets` dicts in autocorrect/constants.py.
 
 Now, you need a bunch of text. Easiest way is to download wikipedia.
